@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information Form</title>
+</head>
+<body>
+
+    <form id="userInfoForm">
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" required><br>
+
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required><br>
+
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="tel" id="phone_number" name="phone_number" required><br>
+
+        <label for="tip_amount">Tip Amount:</label>
+        <input type="text" id="tip_amount" name="tip_amount" required><br>
+
+        <label for="fees_paid_by_customer">Fees Paid by Customer:</label>
+        <input type="text" id="fees_paid_by_customer" name="fees_paid_by_customer" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("userInfoForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            const formData = new FormData(event.target);
+            const userInputData = {};
+
+            formData.forEach((value, key) => {
+                userInputData[key] = value;
+            });
+
+            console.log(userInputData);
+            // You can now send this data to your server or process it as needed
+        });
+    </script>
+
+</body>
+</html>

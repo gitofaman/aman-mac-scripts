@@ -1,0 +1,432 @@
+.gl-modal {
+    display: none !important; }
+    .gl-modal.is-open {
+    display: block !important; }
+    .gl-modal__overlay {
+    align-items: center !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    bottom: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    left: 0 !important;
+    position: fixed !important;
+    right: 0 !important;
+    top: 0 !important;
+    z-index: 9999 !important; }
+    .gl-modal__container {
+    background-color: #fff !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+    max-height: 100% !important;
+    max-width: 500px !important;
+    padding: 0 !important;
+    position: fixed !important;
+    width: 100% !important;
+    z-index: 9999 !important; }
+    .gl-modal__iframe {
+    height: 99vh;
+    overflow: auto !important;
+    width: 100% !important; }
+    .gl-modal--is-responsive .gl-modal__iframe {
+    position: absolute;
+    height: 100%; }
+    @media only screen and (max-device-width: 812px) {
+    .gl-modal__container {
+    left: 0 !important;
+    margin: auto !important;
+    overflow-y: scroll !important;
+    position: fixed !important;
+    right: 0 !important;
+    -webkit-overflow-scrolling: touch !important; }
+    .gl-modal--is-responsive {
+    bottom: 0 !important;
+    top: 0 !important;
+    border-radius: 0 !important; } }
+    .gl-widget {
+    font-family: 'Lato', sans-serif !important;
+    margin: 0 auto !important;
+    min-width: 250px !important;
+    width: 100% !important;
+    overflow-y: none !important; }
+    .gl-widget * {
+    margin-top: unset !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal {
+    all: unset;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    z-index: 9999 !important;
+    display: block !important;
+    opacity: 100 !important;
+    outline: 0 !important;
+    pointer-events: initial !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn {
+    border-radius: 25px !important;
+    display: block !important;
+    height: initial !important;
+    font-size: 18px !important;
+    padding: 0.375rem 0.75rem !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-outline-primary {
+    background-color: #fff !important;
+    border: 2px solid #097886 !important;
+    color: #4a4a4a !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-outline-primary.active {
+      background-color: rgba(12, 161, 179, 0.1) !important;
+      border-color: #097886 !important;
+      color: #097886 !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-primary {
+    border: 2px solid !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-primary:hover {
+      color: #fff !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-outline-secondary {
+    background-color: transparent;
+    border: 1px solid #6c757d;
+    color: #4a4a4a; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-outline-secondary:hover {
+      color: #fff !important;
+      background-color: #6c757d !important;
+      border-color: #6c757d !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    margin: 0 auto !important;
+    width: 100% !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal div.mt-4 {
+    margin: 0.5em 0 !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .invalid-feedback {
+    color: red !important;
+    display: block !important;
+    width: 100% !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-block {
+    flex: 1 !important;
+    margin: 1em 0.75em !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal input {
+    background-color: #fff !important;
+    border: 1px solid #6c757d !important;
+    border-radius: 3px !important;
+    padding: 1em !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+    flex: 100% !important;
+    margin: 1em 0 !important;
+    width: 100% !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-dialog {
+    min-height: calc(100% - 60vh) !important;
+    margin: 1.75rem auto !important;
+    max-width: 500px !important;
+    width: auto !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-content {
+    background-color: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 0.3rem !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    outline: 0 !important;
+    width: 100% !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-body {
+    padding: 0 1.5rem !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-footer {
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    padding: 1.5rem !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-footer .popup-card__action {
+      margin: 0.25em !important;
+      width: 100% !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-header {
+    border: none !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    padding: 1rem !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-header .close {
+      background-color: transparent !important;
+      border: none !important;
+      color: #4a4a4a !important;
+      cursor: pointer !important;
+      outline: none !important;
+      float: right !important;
+      font-size: 1.5rem !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-title {
+    font-size: 18px !important;
+    margin: 1.5em 0 1em 0  !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    width: 100% !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .modal-body {
+    flex: 1 1 auto !important;
+    position: relative !important; }
+    .gl-widget #give-in-honor-container button.popup-card__link {
+    background-color: white !important;
+    border-radius: 25px !important;
+    border: 2px solid #6c757d !important;
+    color: #6c757d !important;
+    font-size: 18px !important;
+    height: initial !important;
+    padding: 0.375rem 0.75rem !important;
+    display: block !important;
+    margin: 1em 0 !important;
+    text-align: center !important;
+    width: 100% !important; }
+    .gl-widget #give-in-honor-container button.popup-card__link:hover {
+    color: #fff !important;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important; }
+    .gl-widget--is-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important; }
+    .gl-widget__error-message {
+    display: none !important;
+    font-size: 12px !important;
+    text-align: center !important;
+    color: red !important;
+    padding: 5px !important; }
+    .gl-widget__overlay {
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 1020 !important; }
+    .gl-widget__overlay--show {
+    display: flex !important; }
+    .gl-widget__overlay-spinner {
+    animation: rotate 1.5s linear infinite !important;
+    height: 64px !important;
+    width: 64px !important; }
+    
+    @keyframes rotate {
+    to {
+    transform: rotate(360deg); } }
+    .gl-widget--row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important; }
+    .gl-widget--col {
+    flex: 5 !important; }
+    .gl-widget__btn {
+    font-family: 'Lato', sans-serif !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    vertical-align: middle !important;
+    user-select: none !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    border: 0 !important;
+    border-radius: 3px !important;
+    cursor: pointer !important;
+    line-height: 1.5 !important;
+    margin-left: 2px !important;
+    margin-right: 2px !important; }
+    .gl-widget__btn:first-of-type {
+    margin-left: 0 !important; }
+    .gl-widget__btn:last-of-type {
+    margin-right: 0 !important; }
+    .gl-widget__btn--primary {
+    color: #fff !important; }
+    .gl-widget__btn--primary:hover, .gl-widget__btn--primary:active {
+      background: #868E96 !important;
+      border-color: #868E96 !important;
+      color: #fff !important; }
+    .gl-widget__btn--primary:focus {
+      outline: none !important; }
+    .gl-widget__btn--outline-primary {
+    background-color: #fff !important;
+    border: 1px solid #B2B3B5 !important;
+    color: #B2B3B5 !important;
+    display: inline-block !important;
+    height: 44px !important;
+    padding: 1px !important;
+    margin-bottom: 5px !important; }
+    .gl-widget__btn--outline-primary:hover:not(.gl-widget--selected-btn) {
+      background-color: #868E96 !important;
+      border-color: #868E96 !important;
+      color: #fff !important; }
+    .gl-widget__btn--outline-primary:active, .gl-widget__btn--outline-primary:focus, .gl-widget__btn--outline-primary:hover {
+      color: #fff !important;
+      outline: none !important; }
+    .gl-widget--selected-btn {
+    padding: 0 !important; }
+    .gl-widget--selected-btn:focus {
+    outline: none !important; }
+    .gl-widget__frequency-selection-container {
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important; }
+    .gl-widget__input-group {
+    border: 1px solid #B2B3B5 !important;
+    border-radius: 3px !important;
+    position: relative !important;
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important; }
+    .gl-widget__form-control {
+    flex: 1 1 auto !important;
+    width: 1% !important;
+    margin: 0 !important;
+    display: block !important;
+    padding: 1rem 0.75rem 0.75rem 0.75rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    color: #495057 !important;
+    background-clip: padding-box !important;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+    box-shadow: none !important; }
+    .gl-widget__donation-input-field {
+    height: 50px !important;
+    padding: 0 60px 0 40px !important;
+    background-color: #fff !important;
+    border: 1px !important;
+    border-radius: 3px !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+    position: relative !important;
+    -moz-appearance: textfield !important; }
+    .gl-widget__donation-input-field::-webkit-input-placeholder {
+    text-align: right !important; }
+    .gl-widget__donation-input-field::-moz-placeholder {
+    text-align: right !important; }
+    .gl-widget__donation-input-field::-ms-input-placeholder {
+    text-align: right !important; }
+    .gl-widget__donation-input-field::-moz-placeholder {
+    text-align: right !important; }
+    .gl-widget__donation-input-field::-webkit-outer-spin-button, .gl-widget__donation-input-field::-webkit-inner-spin-button {
+    -webkit-appearance: none !important; }
+    .gl-widget__currency {
+    background-color: #fcfcfc !important;
+    color: #3b3b3b !important;
+    font-weight: normal !important;
+    height: 46px !important;
+    line-height: 46px !important;
+    margin: 0 !important;
+    position: absolute !important;
+    top: 2px !important;
+    z-index: 1 !important; }
+    .gl-widget__currency-symbol {
+    font-size: 18px !important;
+    left: 18px !important; }
+    .gl-widget__currency-abbr {
+    font-size: 14px !important;
+    right: 18px !important; }
+    .gl-widget__donation-submit-button {
+    height: 54px !important;
+    width: 100% !important; }
+    .gl-widget__payment {
+    margin-top: 5px !important; }
+    .gl-widget__payment-button {
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important; }
+    .gl-widget__payment-request-button-container {
+    display: none !important;
+    width: 100% !important;
+    min-height: 50px !important; }
+    .gl-widget__other-payment-methods-container {
+    margin-top: 10px !important; }
+    .gl-widget__other-payment-method-link, .gl-widget__give-in-honor-link {
+    cursor: pointer !important;
+    display: inline-block !important;
+    margin-bottom: 5px !important; }
+    .gl-widget__other-payment-method-link img, .gl-widget__give-in-honor-link img {
+    display: inline-block !important; }
+    .gl-widget__other-payment-method-link svg, .gl-widget__give-in-honor-link svg {
+    height: 16px !important;
+    margin-bottom: -4px !important;
+    width: 16px !important; }
+    .gl-widget__give-in-honor-link > svg {
+    margin-right: 5px !important; }
+    .gl-widget__other-payment-method-link-text, .gl-widget__give-in-honor-link-text {
+    font-size: 14px !important;
+    line-height: 22px !important; }
+    .gl-widget__user-pressed-tab *:focus {
+    outline: 2px solid #7AACFE !important;
+    /* for non-webkit browsers */
+    outline: 5px auto -webkit-focus-ring-color !important; }
+    .gl-widget__google-pay-button {
+    cursor: pointer !important;
+    background-color: #000 !important;
+    background-origin: content-box !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    border: 0 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15) !important;
+    outline: 0 !important;
+    padding: 11px 24px !important;
+    width: 100% !important; }
+    .gl-widget__google-pay-button .google-pay-button-text {
+    color: #ffffff !important;
+    font-size: 21px !important;
+    font-weight: 300 !important;
+    margin-right: 2px !important;
+    vertical-align: middle !important; }
+    .gl-widget__google-pay-button img {
+    height: 27px !important;
+    margin-left: 2px !important;
+    padding-top: 4px !important;
+    vertical-align: middle !important;
+    width: 56px !important; }
+    
+    .gl-widget__btn--primary {
+    background-color: #060570 !important;
+    border-color: #060570 !important; }
+    .gl-widget__btn--primary:hover {
+    border-color: #060570 !important;
+    color: #060570 !important; }
+    .gl-widget__btn--primary.disabled, .gl-widget__btn--primary:disabled {
+    background-color: rgba(6, 5, 112, 0.5) !important;
+    border-color: #060570 !important; }
+    
+    .gl-widget__btn--outline-primary:active, .gl-widget__btn--outline-primary:focus, .gl-widget__btn--outline-primary:hover {
+    background-color: #060570 !important; }
+    
+    .gl-widget__other-payment-method-link-text {
+    color: #060570 !important; }
+    
+    .gl-widget__give-in-honor-link svg {
+    fill: #060570 !important; }
+    
+    .gl-widget__give-in-honor-link-text {
+    color: #060570 !important; }
+    
+    .gl-widget--selected-btn {
+    border: 2px solid #060570 !important;
+    background: linear-gradient(rgba(6, 5, 112, 0.1), rgba(6, 5, 112, 0.1)) !important;
+    color: #060570 !important; }
+    
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-primary {
+    background-color: #060570 !important;
+    border-color: #060570 !important; }
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-primary:hover {
+    background-color: #020227 !important;
+    border-color: #020227 !important; }
+    
+    .gl-widget #give-in-honor-container div.popup-card__modal .btn-outline-secondary.active {
+    background: linear-gradient(rgba(6, 5, 112, 0.1), rgba(6, 5, 112, 0.1)) !important;
+    border-color: #060570 !important;
+    box-shadow: 0px 0px 0px 2px #060570;
+    color: #060570 !important; }

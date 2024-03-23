@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="code.css">
+</head>
+
+<body>
+    <pre class="code_snippet">
+        <code class="language-python">
+<span class="text-color-color1">import </span>ciphercore <span class="text-color-color1">as </span>cc
+
+c = cc.<span class="text-color-color2">create_context</span>()
+<span class="text-color-color1">with</span> c:
+    <span class="text_indent-1">g = c.<span class="text-color-color2">create_graph</span>()</span>
+    <span class="text_indent-1"><span class="text-color-color1">with</span> g:</span>
+        <span class="text_indent-2">input1 = g.<span class="text-color-color2">input</span>(cc.<span class="text-color-color2">array_type</span>([<span class="text-color-color-3">10</span>, <span class="text-color-color-3">20</span>], cc.<span class="text-color-color-4">INT32</span>))</span>
+        <span class="text_indent-2">input2 = g.<span class="text-color-color2">input</span>(cc.<span class="text-color-color2">array_type</span>([<span class="text-color-color-3">20</span>, <span class="text-color-color-3">30</span>], cc.<span class="text-color-color-4">INT32</span>))</span>
+        output = input1 @ input2
+        <span class="text_indent-2">output.<span class="text-color-color2">set_as_output</span>()</span>
+    <span class="text_indent-1">g.<span class="text-color-color2">set_as_main</span></span>()
+        </code>
+    </pre>
+</body>
+
+</html>

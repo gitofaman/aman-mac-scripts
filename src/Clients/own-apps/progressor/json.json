@@ -1,0 +1,9 @@
+[
+    {
+        "skillName": "Work Time", 
+        "startDate": "09-10-2023",
+        "skillDays": 90,
+        "skillData": [0,1,2,3],
+        "skilUnit": "hours"
+    } 
+]

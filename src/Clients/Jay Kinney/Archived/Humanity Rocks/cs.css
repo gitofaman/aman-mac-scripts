@@ -1,0 +1,15 @@
+.button-custom-1.is--active .fontawesome.play.play-1, .button-custom-1.is--active .on-open {
+    display: none!important;
+}
+
+.button-custom-1 .fontawesome.play.play-2, .button-custom-1 .for-close {
+    display: none!important;
+}
+
+.button-custom-1 .fontawesome.play.play-1, .button-custom-1 .on-open {
+    display: block!important;
+}
+
+.button-custom-1.is--active .fontawesome.play.play-2, .button-custom-1.is--active .for-close {
+    display: block!important;
+}

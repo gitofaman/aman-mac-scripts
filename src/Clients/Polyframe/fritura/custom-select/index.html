@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Select Field</title>
+<style>
+  /* Styling for custom select */
+  .custom-select {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .custom-select .options {
+    display: none;
+    z-index: 1;
+  }
+  
+  .custom-select .option {
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+</style>
+</head>
+<body>
+
+<div class="custom-select">
+  <div class="selected-option">Select an Option</div>
+  <div class="options">
+    <div class="option" data-value="1">Option 1</div>
+    <div class="option" data-value="2">Option 2</div>
+    <div class="option" data-value="3">Option 3</div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+<script>
+
+</script>
+
+</body>
+</html>

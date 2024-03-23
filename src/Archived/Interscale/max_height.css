@@ -1,0 +1,7 @@
+@media screen and (min-width: 991px), 
+       screen and (max-height: 800px) {
+    .layout356_content-item {
+        position: relative;
+        top: 0rem;
+    }
+}

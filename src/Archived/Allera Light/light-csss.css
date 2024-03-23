@@ -1,0 +1,7 @@
+.fixed-product-image {
+    opacity: 0;
+}
+
+.fixed-product-image:nth-child(2) {
+    opacity: 1;
+}

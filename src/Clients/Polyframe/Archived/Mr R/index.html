@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Angled Section</title>
+	<style>
+		.angled-section {
+			background-color: red;
+			clip-path: polygon(0% 15%, 100% 0, 80% 120%, 0% 100%);
+			height: 500px; /* Set the desired height */
+			position: relative;
+		}
+
+		.angled-section:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 15%;
+			background-color: red;
+			transform: skewY(-15deg);
+			transform-origin: top left;
+		}
+
+		.angled-section:after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 15%;
+			background-color: red;
+			transform: skewY(15deg);
+			transform-origin: bottom left;
+		}
+        .full-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .img-container {
+            width: 50%;
+        }
+        h1 {
+            margin-top: -10px;
+        }
+	</style>
+</head>
+<body>
+<section class="angled-section">
+    <div class="img-container">
+        <img class="full-image" src="https://m.media-amazon.com/images/M/MV5BNTkzNjJhYjQtNjU0Yy00Y2M3LWI2ZDgtNDRhZmNlNDFjMjQ5XkEyXkFqcGdeQXVyODk2ODI3MTU@._V1_FMjpg_UX1000_.jpg" alt="" srcset="">
+    </div>
+</section>
+</body>
+</html>

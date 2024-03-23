@@ -1,0 +1,341 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Modern HTML Email Template</title>
+	<style type="text/css">
+		:root {
+			--white-color: #fff;
+			--theme-color: #ccc;
+			--black-color: #000;
+			--color-1: #fff000;
+			--black-2: #26292B;
+		}
+
+		body {
+			margin: 0;
+			background-color: var(--theme-color);
+		}
+
+		table {
+			border-spacing: 0;
+		}
+
+		td {
+			padding: 0;
+		}
+
+		img {
+			border: 0;
+		}
+
+		.wrapper {
+			width: 100%;
+			table-layout: fixed;
+			/* To make sure table doesn't cross borders of wrapper */
+			background-color: var(--theme-color);
+			padding-bottom: 60px;
+		}
+
+		.main {
+			background-color: var(--white-color);
+			margin: 0 auto;
+			width: 100%;
+			max-width: 600px;
+			font-family: sans-serif;
+		}
+		.two-columns {
+			text-align: center;
+			font-size: 0;
+		}
+		.two-columns .column {
+			width: 100%;
+			display: inline-block;
+			max-width: 300px;
+			vertical-align: top;
+			text-align: center;
+			
+		}
+		.sm-icon {
+			width: 30px;
+		}
+		.three-columns {
+			text-align: center;
+			font-size: 0;
+			padding: 15px 0 25px;
+		}
+		.three-columns .column {
+			width: 100%;
+			display: inline-block;
+			max-width: 200px;
+			vertical-align: top;
+			text-align: center;
+		}
+		.three-columns .padding {
+			padding: 15px;
+		}
+		.three-columns .content, .two-columns .content {
+			font-size: 15px;
+			line-height: 20px;
+			padding: 0 5px;
+		}
+		.two-columns .content {
+			text-align: left;
+		}
+		.btn-primary {
+			padding: 14px 20px;
+			background-color: var(--white-color);
+			color: var(--black-2);
+			border: 0px;
+			border-radius: 4px;
+			text-transform: uppercase;
+			font-weight: 600;
+		}
+		.btn-primary.btn-black {
+			background-color: var(--black-2);
+			color: var(--white-color);
+		}
+		td p {
+			margin-block-start: 0;
+			margin-block-end: 0;
+		}
+		.margin-ten {
+			margin-bottom: 10px;
+		}
+		.margin-20 {
+			margin-bottom: 20px;
+		}
+		.padding-all {
+			padding: 24px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<center class="wrapper">
+		<table class="main" width="100%">
+			<!-- TOP BORDER -->
+			<tr>
+				<td height="8" style="background-color: var(--color-1);"></td>
+			</tr>
+
+			<!-- LOGO SECTION -->
+			<tr>
+				<td style="padding: 14px 0px 14px">
+				  <table width="100%">
+					<tr>
+					  <td class="two-columns">
+						<table class="column">
+						  <tr>
+							<td style="padding: 0 62px">
+							  <a href="https://www.polyframe.works/">
+								<img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/63445653ef5cdd3f73ceb41f_PolyFrame%20Horizontal%20V2-06-p-500.png"
+								  alt="Polyframe Logo" width="180" title="Polyframe">
+							  </a>
+							</td>
+						  </tr>
+						</table>
+						<table class="column">
+						  <tr>
+							<td style="padding: 10px 72px;">
+							  <a href="http://example.com"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc79d1a36f16410428b8_black-facebook.png" class="sm-icon" alt="" width="32" height="32"></a>
+							  <a href="http://example.com"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc79bb1113aec0511996_black-twitter.png" class="sm-icon" alt="" width="32" height="32"></a>
+							  <a href="http://example.com"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc799a55d147f4543e62_black-linkedin.png" class="sm-icon" alt="" width="32" height="32"></a>
+							  <a href="http://example.com"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc79808f4e9db58d2ada_black-youtube.png" class="sm-icon" alt="" width="32" height="32"></a>
+							  <a href="http://example.com"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc799a55d147f4543e65_black-instagram.png" class="sm-icon" alt="" width="32" height="32"></a>
+							</td>
+						  </tr>
+						</table>
+					  </td>
+					</tr>
+				  </table>
+				</td>
+			  </tr>
+			  
+
+			<!-- BANNER IMAGE -->
+			<tr>
+				<td><a href="http://"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7a8800e5273083517d_banner.jpg" alt="" srcset="" style="max-width: 100%"></a></td>
+			</tr>
+
+			<!-- THREE COLUMN SECTION -->
+			<tr>
+				<td>
+					<table width="100%">
+						<tr>
+							<td class="three-columns">
+								<table class="column">
+									<tr>
+										<td class="padding">
+											<table class="content">
+												<tr>
+													<td><a href="#"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7af4a3713a31987a29_email.png" width="130" style="max-width: 120px" alt="" srcset=""></a></td>
+												</tr>
+												<tr>
+													<td>
+														<p style="font-weight: bold; font-size: 17px;" class="margin-ten">Ecommerce</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p>Responsive HTML Email Template Course to master email development</p>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+								<table class="column">
+									<tr>
+										<td class="padding">
+											<table class="content">
+												<tr>
+													<td><a href="#"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7a01243d4ce05065ad_settings.png" width="130" style="max-width: 120px" alt="" srcset=""></a></td>
+												</tr>
+												<tr>
+													<td>
+														<p style="font-weight: bold; font-size: 17px;" class="margin-ten">Web Design</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p>Responsive HTML Email Template Course to master email development</p>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+								<table class="column">
+									<tr>
+										<td class="padding">
+											<table class="content">
+												<tr>
+													<td><a href="#"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7903e388885ef1d49f_home.png" width="130" style="max-width: 120px" alt="" srcset=""></a></td>
+												</tr>
+												<tr>
+													<td>
+														<p style="font-weight: bold; font-size: 17px;" class="margin-ten">HTML Email</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p>Responsive HTML Email Template Course to master email development</p>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<!-- TWO COLUMN SECTION -->
+			<tr style="background-color: var(--black-2); color: var(--white-color)">
+				<td>
+					<table width="100%">
+						<tr>
+							<td class="two-columns">
+								<table class="column">
+									<tr>
+										<td>
+											<img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7afb7f536bf74693a7_keyboard.jpg" alt="" srcset="" width="100%" style="max-width: 300px">
+										</td>
+									</tr>
+								</table>
+								<table class="column">
+									<tr>
+										<td class="padding">
+											<table class="content" style="padding: 40px 24px;">
+												<tr>
+													<td>
+														<p style="font-weight: bold; font-size: 24px; line-height: 24px; color: white;" class="margin-ten">Web Design</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p style="color: white;" class="margin-20">Responsive HTML Email Template Course to master email development</p>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<button class="btn-primary">Get Started</button>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<!-- TITLE, TEXT & BUTTON -->
+			<tr>
+				<td class="padding-all">
+					<table style="text-align: center;">
+						<tr>
+							<td>
+								<p style="text-align: center; font-weight: 700;" class="margin-ten">Heading</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p style="text-align: center;" class="margin-20">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, animi iste ex quibusdam natus beatae molestias eius itaque modi, autem ducimus voluptates aperiam veniam eveniet aliquam fugiat quae sed vitae?</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button class="btn-primary btn-black">Get Started</button>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<!-- FOOTER SECTION -->
+			<tr style="background-color: var(--black-2); color: var(--white-color)">
+				<td style="text-align: center;">
+					<table>
+						<tr><img class="padding-all" style="width: 120px;" src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fb7e53d4414a77c26800_Mask_group%20(1).png" alt="" srcset=""></tr>
+						<tr ><td style="text-align: center; color: white;"><p class="margin-ten">Modern HTML Email</p></td></tr>
+						<tr style="text-align: center;">
+							<td>
+								<a href="http://"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7a8cb20be4f73cbc83_white-facebook.png" alt="" class="sm-icon"></a>
+								<a href="http://"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7a2de566c5d95634b7_white-instagram.png" alt="" class="sm-icon"></a>
+								<a href="http://"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7ae79aa55d3a6c775c_white-linkedin.png" alt="" class="sm-icon"></a>
+								<a href="http://"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7a67265ec93df6490a_white-twitter.png" alt="" class="sm-icon"></a>
+								<a href="http://"><img src="https://uploads-ssl.webflow.com/623a2d70fc0e0d8358f1714f/6482fc7a60f9ba2ad784cfb3_white-youtube.png" alt="" class="sm-icon"></a>
+							</td>
+						</tr>
+						<tr style="text-align: center;">
+							<td>
+								<p style='height: 0px' class="margin-20"></p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<a class="padding-all" href="http://" style="color:#fff;font-weight: 700;text-decoration: none; text-align: center;">
+									<p>Subscribe</p>
+								</a>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</center>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+Cookie.get('locked-resource')

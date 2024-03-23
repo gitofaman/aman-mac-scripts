@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contenteditable with Cookie (Using Index)</title>
+</head>
+<body>
+    <div contenteditable="true">Editable content</div>
+    <div contenteditable="true">More editable content</div>
+
+    <script>
+        // Function to save the content of contenteditable elements to cookies
+        function saveContentToCookies() {
+            const editableDivs = document.querySelectorAll('[contenteditable="true"]');
+            editableDivs.forEach((element, index) => {
+                const content = element.textContent;
+                document.cookie = `editable-div-${index}=${encodeURIComponent(content)}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+            });
+        }
+
+        // Function to load and apply content from cookies to contenteditable elements
+        function loadContentFromCookies() {
+            const editableDivs = document.querySelectorAll('[contenteditable="true"]');
+            editableDivs.forEach((element, index) => {
+                const cookieValue = decodeURIComponent(document.cookie.replace(new RegExp(`(?:(?:^|.*;\\s*)editable-div-${index}\\s*\\=\\s*([^;]*).*$)|^.*$`), "$1"));
+                if (cookieValue !== "") {
+                    element.textContent = cookieValue;
+                }
+            });
+        }
+
+        // Monitor changes in contenteditable elements and save their content to cookies
+        document.addEventListener("input", () => {
+            saveContentToCookies();
+        });
+
+        // Load content from cookies on page load
+        loadContentFromCookies();
+    </script>
+</body>
+</html>

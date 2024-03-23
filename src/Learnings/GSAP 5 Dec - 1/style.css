@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    height: 15vh;
+    background-color: red;
+
+}
+.button {
+    align-self: center;
+    height: 15vh;
+    width: 15vh;
+    background-color: yellow;
+    cursor: pointer;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    color: white;
+}
+
+.footer {
+    height: 15vh;
+    background-color: blue;
+    transform: translateY(100%);
+}
+
+.sidebar {
+background-color: green;
+width: 15vh;
+}
+.link {
+    font-size: 5vh;
+}

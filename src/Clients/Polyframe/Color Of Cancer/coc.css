@@ -1,0 +1,37 @@
+.post-card-bg {
+    background-color: currentColor;
+}
+/* Apply blue background to every 4th post-card starting from 1 */
+.post-card:nth-child(4n+1) .post-card-bg {
+    color: var(--blue);
+  }
+  
+  /* Apply yellow background to every 4th post-card starting from 2 */
+  .post-card:nth-child(4n+2) .post-card-bg {
+      color: var(--yellow);
+  }
+  .post-card:nth-child(4n+2){
+    color: var(--dark-blue)
+}
+  
+  /* Apply red background to every 4th post-card starting from 3 */
+  .post-card:nth-child(4n+3) .post-card-bg {
+    color: var(--pink);
+  }
+  
+  /* Apply green background to every 4th post-card starting from 4 */
+  .post-card:nth-child(4n) .post-card-bg {
+      color: var(--green);
+  }
+.post-card-arrow.type-rc .post-card-arrow-embed {
+  position: absolute;
+  width: 100%;
+  transform: rotate(-90deg);
+  transform-origin: 100% 0%;
+}
+.post-card-arrow.type-br .full-image, .post-card-arrow.type-bl .full-image {
+    display: none;
+}
+.post-card-arrow.type-br .full-image.hide, .post-card-arrow.type-bl .full-image.hide {
+    display: block!important;
+}

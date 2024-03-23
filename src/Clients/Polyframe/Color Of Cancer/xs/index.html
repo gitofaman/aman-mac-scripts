@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Div Positioning</title>
+    <style>
+        .canvas {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+        }
+
+        .box {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas" id="canvas">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var canvas = $("#canvas");
+            var canvasWidth = canvas.width();
+            var canvasHeight = canvas.height();
+            var divCount = 10;
+
+            for (var i = 0; i < divCount; i++) {
+                var left = Math.floor(Math.random() * (canvasWidth - 50));
+                var top = Math.floor(Math.random() * (canvasHeight - 50));
+
+                // Check for overlap with existing divs
+                var overlaps = false;
+                canvas.find(".box").each(function () {
+                    var box = $(this);
+                    var boxLeft = box.position().left;
+                    var boxTop = box.position().top;
+
+                    if (left < boxLeft + 50 && left + 50 > boxLeft && top < boxTop + 50 && top + 50 > boxTop) {
+                        overlaps = true;
+                        return false; // Stop iterating
+                    }
+                });
+
+                if (!overlaps) {
+                    var div = $("<div class='box'></div>");
+                    div.css({ left: left, top: top });
+                    canvas.append(div);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+
+
+
+
+/* tablet 3 block animation */
+
+
+
+.blocks4-hero, .blocks3-hero {
+    position: relative;
+}
+
+/* hero image animation css */
+@media only screen and (min-width: 991px) {
+    
+}
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    @keyframes tablet_4animation {
+        0% {
+            left: 0%;
+        }
+        100% {
+            left: -33.3%;
+        }
+    }
+    .blocks4-hero {
+        animation: tablet_4animation 2s infinite ease;
+        animation-direction: alternate;
+    }
+    @keyframes tablet_3animation {
+        0% {
+            left: 0%;
+        }
+        50% {
+            left: -50%;
+        }
+        100%  {
+            left: 0%;
+        }
+    }
+    .blocks3-hero {
+        animation: tablet_3animation 2s infinite ease;
+        animation-direction: alternate;
+    }
+}
+@media only screen and (max-width: 768px) and (min-width: 480px) {
+    @keyframes landscape_4animation {
+        0% {
+            left: 0%;
+        }
+        100% {
+            left: -100%;
+        }
+    }
+    .blocks4-hero {
+        animation:	landscape_4animation 3.5s infinite ease;
+        animation-direction: alternate;
+    }
+    @keyframes landscape_3animation {
+        0% {
+            left: 0%;
+        }
+        50% {
+            left: -50%;
+        }
+        100%  {
+            left: 0%;
+        }
+    }
+}
+@media only screen and (max-width: 479px) {
+    /* tablet 4 block animation */
+    @keyframes portrait_4animation {
+        0% {
+            left: 0%;
+        }
+        100%  {
+            left: -300%;
+        }
+    }
+    .blocks4-hero {
+        animation: portrait_4animation 5.5s infinite ease;
+        animation-direction: alternate;
+    }
+}
+@media only screen and (max-width: 768px) {
+    @keyframes landscape_3animation {
+        0% {
+            left: 0%;
+        }
+        100%  {
+            left: -100%;
+        }
+    }
+    .blocks3-hero {
+        animation: landscape_3animation 4s infinite ease;
+        animation-direction: alternate;
+    }
+}

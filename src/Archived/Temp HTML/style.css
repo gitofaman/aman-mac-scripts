@@ -1,0 +1,35 @@
+:root {
+    --span-size: 200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.page-wrap {
+    overflow: hidden;
+}
+
+h1 {
+    position: relative;
+    margin-top: calc(var(--span-size) * -2);
+}
+
+.flex-block {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+}
+
+h1 span {
+    position: absolute;
+    width: 1px;
+    left: 0;
+    top: 0;
+    height: var(--span-size);
+    transform-origin: bottom center;
+    background-color: aqua;
+  }
+

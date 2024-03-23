@@ -1,0 +1,25 @@
+<script>
+    $(document).ready(function() {
+      $(".map-dot").mouseenter(function() {
+        $(this).css("z-index", 999);
+      });
+  
+      $(".map-dot").mouseleave(function() {
+        $(this).css("z-index", 0);
+      });
+    });
+  </script>
+  <script>
+  $('.map-dot').hover(function () {
+      var $this = $(this);
+      var distanceToTop = $this.offset().top - $(window).scrollTop() - 100;
+      var distanceToBottom = $(window).height() - (distanceToTop + $this.height());
+  
+      if(distanceToTop > distanceToBottom) {
+          $(this).addClass('content-above')
+      } else {
+          $(this).removeClass('content-above')
+      }
+  });
+  </script>
+<script src="https://uploads-ssl.webflow.com/6510dd7cb092fa1f0aec3285/6529b57d87d36e6c66badc20_atlus-exp.txt"></script>

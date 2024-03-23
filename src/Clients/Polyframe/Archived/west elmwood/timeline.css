@@ -1,0 +1,36 @@
+.tl_dot {
+    aspect-ratio: 1;
+}
+
+@media only screen and (min-width: 992px) {
+    .tl_dot:nth-child(even) .tl_actual-data {
+        left: 1em;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .tl_dot:nth-child(odd) .points-left {
+        display: none;
+    }
+
+    .tl_dot:nth-child(even) .points-right {
+        display: none;
+    }
+
+    .tl_dot:nth-child(odd) .tl_actual-data {
+        right: 1em;
+        text-align: right;
+        align-items: flex-end;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .tl_dot .tl_actual-data {
+        left: 1em;
+        text-align: left;
+        align-items: flex-start;
+    }
+    .tl_dot .points-right {
+        display: none;
+    }
+}

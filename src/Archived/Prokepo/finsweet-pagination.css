@@ -1,0 +1,24 @@
+.fs-pagination ul li a {
+    display: flex;
+    width: 3em;
+    height: 3em;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5ch!important;
+    text-decoration: none;
+    border: none!important;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+.fs-pagination .fs-pagination-active {
+    background-color: hsla(0, 0.00%, 0.00%, 0.05);
+}
+
+.fs-pagination ul li a {
+    border: none!important;
+}
+
+.fs-pagination ul li:last-child a {
+    border: none!important;
+}

@@ -1,0 +1,9 @@
+h1 {
+    display: inline-block;
+    font-size: 20px;
+    background-color: red;
+}
+h1 {
+    width: 16px;
+    overflow: hidden;
+}

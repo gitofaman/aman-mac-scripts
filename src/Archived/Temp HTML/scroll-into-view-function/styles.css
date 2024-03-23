@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.full-size {
+    background-color: rgb(96, 169, 96);
+    height: 400px;
+    width: 100vw;
+    position: relative;
+    padding: 20px;
+}
+.full-size * {
+    position: sticky;
+    top: 0;
+}
+.marker {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0%;
+    height: 1px;
+    background-color: black;
+}
+.red {
+    background-color: rgb(255, 74, 74);
+}
+
+.blue {
+    background-color: blueviolet;
+}

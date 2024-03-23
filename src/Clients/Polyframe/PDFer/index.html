@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contenteditable Synchronization</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div class="div-1">
+    <div class="div-2">
+        <div class="layout_block-normal" id='to-find-1'>
+            
+        </div>
+    </div>
+    <div class="layout_block-normal" id='reference'>
+
+    </div>
+</div>
+
+  <script>
+// Find all the blocks with the same class 'layout_block-normal'
+var blocks = $('.layout_block-normal');
+
+// Find the index of the 'reference' block
+var referenceIndex = blocks.index($('#reference'));
+
+// Check if there are previous blocks, and get the 'id' of the one before 'to-find'
+if (referenceIndex > 0) {
+    var previousBlockId = blocks.eq(referenceIndex - 1).attr('id');
+    console.log('Previous Block ID:', previousBlockId);
+} else {
+    console.log('No previous block with the same class found.');
+}
+
+
+  </script>
+</body>
+</html>

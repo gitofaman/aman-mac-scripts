@@ -1,0 +1,598 @@
+{
+    "object": "list",
+    "data": [
+      {
+        "id": "prod_M97uLiorEKXZHi",
+        "object": "product",
+        "active": true,
+        "attributes": [
+  
+        ],
+        "created": 1659087553,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "upper mid",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1659087553,
+        "url": null
+      },
+      {
+        "id": "prod_M52PebZATw3Ee4",
+        "object": "product",
+        "active": true,
+        "attributes": [
+  
+        ],
+        "created": 1658144511,
+        "default_price": "price_1LMsKiSEviSptRJ06c8KRUn1",
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+          "type": "email",
+          "no_of_emails_high": "unlimited",
+          "no_of_emails_low": "unlimited"
+        },
+        "name": "Highest Plan",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1659519229,
+        "url": null
+      },
+      {
+        "id": "prod_M52OXiw2e1eCGL",
+        "object": "product",
+        "active": true,
+        "attributes": [
+  
+        ],
+        "created": 1658144456,
+        "default_price": "price_1LMsJqSEviSptRJ0tcU1GVlt",
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+          "no_of_emails_low": "40001",
+          "no_of_emails_high": "50000",
+          "type": "email"
+        },
+        "name": "Medium Plan",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658144459,
+        "url": null
+      },
+      {
+        "id": "prod_LyFuU9brrkf7JO",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1656580257,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "maharaj ka khana",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143743,
+        "url": null
+      },
+      {
+        "id": "prod_LxyRravc72prGQ",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1656515250,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "tr",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143749,
+        "url": null
+      },
+      {
+        "id": "prod_LxyNrMM3S4eF5z",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1656515042,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "trial",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143751,
+        "url": null
+      },
+      {
+        "id": "prod_LxyG4mWZfRVGWb",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1656514584,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "free trial",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143753,
+        "url": null
+      },
+      {
+        "id": "prod_LxHWk38RFpNiNP",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1656355619,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "gg test",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143755,
+        "url": null
+      },
+      {
+        "id": "prod_LxA6VSwBRNpJl1",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1656328001,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "subs",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143757,
+        "url": null
+      },
+      {
+        "id": "prod_LvGJDfWZe1hZid",
+        "object": "product",
+        "active": true,
+        "attributes": [
+  
+        ],
+        "created": 1655889834,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "14 day free trial for simulation",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1655889834,
+        "url": null
+      },
+      {
+        "id": "prod_LpnghgVwO5nYFS",
+        "object": "product",
+        "active": true,
+        "attributes": [
+  
+        ],
+        "created": 1654630128,
+        "default_price": "price_1L8858SEviSptRJ0vG9WJ4dW",
+        "description": "This plan is created to test the moda API that will retrieve prices on the frontend",
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+          "no_of_emails_low": "1001",
+          "no_of_emails_high": "1500",
+          "type": "email"
+        },
+        "name": "Plan created to test price retrieval",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1657177186,
+        "url": null
+      },
+      {
+        "id": "prod_LlY7A3DGq00vun",
+        "object": "product",
+        "active": true,
+        "attributes": [
+  
+        ],
+        "created": 1653649642,
+        "default_price": "price_1L410pSEviSptRJ0taFPrGAz",
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+          "no_of_emails_low": "0",
+          "no_of_emails_high": "250",
+          "type": "email"
+        },
+        "name": "Lowest Plan",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143781,
+        "url": null
+      },
+      {
+        "id": "prod_LhQ9Xaf7HX98IB",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1652697458,
+        "default_price": "price_1L01J2SEviSptRJ0gAC0eRRp",
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "Highest Plan",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143820,
+        "url": null
+      },
+      {
+        "id": "prod_LNX0NXGhTKY6rt",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1648110144,
+        "default_price": "price_1L8ecHSEviSptRJ0mgtOeGy2",
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "hjkhkj",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143873,
+        "url": null
+      },
+      {
+        "id": "prod_LNWmGbaaUyDVOk",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1648109340,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+          "no_of_profiles": "-1",
+          "no_of_emails": "-1",
+          "no_of_sms": "10"
+        },
+        "name": "test with metadata",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143864,
+        "url": null
+      },
+      {
+        "id": "prod_LNWfDLlIo6RoTD",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1648108907,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "Free trial dummy",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143859,
+        "url": null
+      },
+      {
+        "id": "prod_LNVHNUzhYjLfuU",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1648103763,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "Free trial of 729 days",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143855,
+        "url": null
+      },
+      {
+        "id": "prod_LNUsehOMq6rbDG",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1648102266,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+          "prof": "10000",
+          "email": "100000",
+          "SMS": "100"
+        },
+        "name": "Free trial with 999 million profiles",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143850,
+        "url": null
+      },
+      {
+        "id": "prod_LMM3IMdOos88Cb",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1647838779,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "one time",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143846,
+        "url": null
+      },
+      {
+        "id": "prod_LMLFsSKk5I0pvH",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1647835779,
+        "default_price": null,
+        "description": null,
+        "images": [
+  
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "recurring",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1658143836,
+        "url": null
+      },
+      {
+        "id": "prod_LIGvnKVEh3HC4k",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1646897134,
+        "default_price": null,
+        "description": "10,000 profiles, 100,000 emails, 20 SMSs, monthly",
+        "images": [
+          "https://files.stripe.com/links/MDB8YWNjdF8xS2JnRDZTRXZpU3B0UkowfGZsX3Rlc3RfeE04VE1TRzd6am1rU3JyZHo1c2c3WkNN00UySKQEeJ"
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "Plan 1",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": "Profiles",
+        "updated": 1658143831,
+        "url": null
+      },
+      {
+        "id": "prod_LIGr5bNuckgUpl",
+        "object": "product",
+        "active": false,
+        "attributes": [
+  
+        ],
+        "created": 1646896893,
+        "default_price": null,
+        "description": "This is the free 14 day plan I created. 5 profiles, 5 emails, 5 sms credits, and one time",
+        "images": [
+          "https://files.stripe.com/links/MDB8YWNjdF8xS2JnRDZTRXZpU3B0UkowfGZsX3Rlc3RfZENPRjZrR0JSTm1ieTFLY1NwcW9yZDlD00WlHQRAN3"
+        ],
+        "livemode": false,
+        "metadata": {
+        },
+        "name": "Free plan",
+        "package_dimensions": null,
+        "shippable": null,
+        "statement_descriptor": null,
+        "tax_code": null,
+        "type": "service",
+        "unit_label": null,
+        "updated": 1655874960,
+        "url": null
+      }
+    ],
+    "has_more": false,
+    "url": "/v1/products"
+  }
+  

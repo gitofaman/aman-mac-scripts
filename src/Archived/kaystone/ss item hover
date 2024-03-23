@@ -1,0 +1,11 @@
+var ssItems = document.querySelectorAll('.ss--item')
+ssItems.forEach(ssItem=>{
+    ssItem.addEventListener('mouseenter',()=>{
+        ssItem.querySelector('.ss--item-name').classList.add('active')
+        ssItem.querySelector('.expand-overlay').classList.add('active')
+    })
+    ssItem.addEventListener('mouseleave',()=>{
+        ssItem.querySelector('.ss--item-name').classList.remove('active')
+        ssItem.querySelector('.expand-overlay').classList.remove('active')
+    })
+})

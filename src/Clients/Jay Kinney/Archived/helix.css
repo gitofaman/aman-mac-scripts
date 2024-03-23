@@ -1,0 +1,12 @@
+.background-silver-gradient-heading {
+	background-size: 1200px;
+    animation: silvedBg 0.25s ease 0s infinite;
+}
+@keyframes silvedBg {
+	0% {
+  	background-position: left 0px top;
+  }
+  100% {
+		background-position: right 0px top;
+	}
+}

@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+}
+._300vh {
+    height: 300vh;
+    position: relative;
+    margin-top: 200px;
+}
+.blue {
+    background-color:cornflowerblue;
+}
+.green {
+    background-color: darkseagreen;
+}
+.orange {
+    background-color: burlywood;
+}
+.sticky {
+    position: sticky;
+    top: 0;
+    background-image: url('./image\ 2.png');
+    background-size: 100vw;
+    height: 300px;
+    width: 500vw;
+}

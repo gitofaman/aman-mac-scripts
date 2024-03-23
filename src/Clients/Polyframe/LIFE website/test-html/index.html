@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expandable Text</title>
+  <style>
+    .expandable-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      max-height: 3em;
+    }
+    .expanded {
+      max-height: none;
+    }
+    .read-more, .collapse {
+      cursor: pointer;
+      color: blue;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.read-more').click(function() {
+        $(this).closest('.expandable-text').toggleClass('expanded');
+        if ($(this).text() === '... read more') {
+          $(this).text('... collapse');
+        } else {
+          $(this).text('... read more');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+
+<div class="expandable-text">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in semper mauris. Fusce vulputate, dolor in luctus
+    lacinia, neque sem sollicitudin purus, a venenatis lacus arcu ut velit. Nulla facilisi. Sed at vestibulum tortor.
+    Quisque fermentum congue leo, non ullamcorper elit varius nec. Praesent luctus nunc in purus laoreet auctor. Proin a
+    est ut erat facilisis scelerisque.
+  </p>
+</div>
+<div class="read-more">... read more</div>
+
+</body>
+</html>

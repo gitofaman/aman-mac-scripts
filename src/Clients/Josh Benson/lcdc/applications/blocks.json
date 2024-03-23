@@ -1,0 +1,154 @@
+[
+    {
+        "name": "Richard Townsell",
+        "profession": "Executive  Director",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Richard1-768x960-1.jpeg?fit=768%2C960&ssl=1",
+        "mail": "rtownsell@lcdc.net",
+        "linkedin": "https://www.linkedin.com/in/richard-townsell-51015aa/",
+        "btn-link": "https://www.lcdc.net/our-team/richard-townsell/"
+    },
+    {
+        "name": "Whittney Smith",
+        "profession": "Deputy Director & Counsel ",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Whittney1-e1631039474938-768x960-1.jpeg?fit=768%2C960&ssl=1",
+        "mail": "wsmith@lcdc.net",
+        "linkedin": "https://www.linkedin.com/in/whittney-smith-60623/",
+        "btn-link": "https://www.lcdc.net/our-team/whittney-smith/"
+    },
+    {
+        "name": "Anthony Pegues",
+        "profession": "Director  of Accounting",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Anthony-768x960-1.jpeg?fit=768%2C960&ssl=1",
+        "mail": "apegues@lcdc.net",
+        "linkedin": "",
+        "btn-link": "https://www.lcdc.net/our-team/anthony-pegues/"
+    },
+    {
+        "name": "Richelle Harris",
+        "profession": "Director  of Operations",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Richelle-Harris-headshot-768x960-1.jpeg?fit=768%2C960&ssl=1",
+        "mail": "rharris@lcdc.net",
+        "linkedin": "https://www.linkedin.com/in/richelle-harris-05606a5b/",
+        "btn-link": "https://www.lcdc.net/our-team/richelle-harris/"
+    },
+    {
+        "name": "Kevin Hyland",
+        "profession": "Administrative  Assistant",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Kevin-Hyland-headshot.jpg?fit=1280%2C1600&ssl=1",
+        "mail": "",
+        "linkedin": "",
+        "btn-link": "https://www.lcdc.net/our-team/kevin-hyland/"
+    },
+    {
+        "name": "Stephanie Gill",
+        "profession": "Director of Financial  Wellness",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/10/Untitled-design-2023-10-24T130322.836.png?fit=1280%2C1600&ssl=1",
+        "mail": "sgill@lcdc.net",
+        "linkedin": "https://www.linkedin.com/in/stephanie-gill-0b1b24b4/",
+        "btn-link": ""
+    },
+    {
+        "name": "Pamela Bell",
+        "profession": "Homebuyer Outreach & Training Specialist",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Pam-Bell-headshot-768x960-1.jpeg?fit=768%2C960&ssl=1",
+        "mail": "pbell@lcdc.net",
+        "linkedin": "https://www.linkedin.com/in/pamela-bell-4113515a/",
+        "btn-link": "https://www.lcdc.net/our-team/pamela-bell/"
+    },
+    {
+        "name": "Brian Tyler",
+        "profession": "Economic Development Coordinator",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Brian-Taylor.jpeg?fit=453%2C571&ssl=1",
+        "mail": "btyler@lcdc.net",
+        "linkedin": "",
+        "btn-link": "https://www.lcdc.net/our-team/brian-tyler/"
+    },
+    {
+        "name": " Diamond Jackson",
+        "profession": "Communications Coordinator",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/10/LCDC-2-of-27.jpg?fit=800%2C1000&ssl=1",
+        "mail": "djackson@lcdc.net",
+        "linkedin": "",
+        "btn-link": "https://www.lcdc.net/our-team/diamond-jackson/"
+    },
+    {
+        "name": "Adjua Adjei-Danso",
+        "profession": "Reclaiming North Lawndale Project Director",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/10/LCDC-2-of-2.jpg?fit=1638%2C2048&ssl=1",
+        "mail": "aadjeidanso@lcdc.net",
+        "linkedin": "",
+        "btn-link": ""
+    },
+    {
+        "name": "Peter Tate",
+        "profession": "Project Manager",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Peter-Tate_websize.jpg?fit=1280%2C1600&ssl=1",
+        "mail": "ptate@lcdc.net",
+        "linkedin": "https://www.linkedin.com/in/peter-tate-8b7a56157/",
+        "btn-link": "https://www.lcdc.net/our-team/peter-tate/"
+    },
+    {
+        "name": "Carlos Lucero",
+        "profession": "Construction Manager",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Carlos-Lucero-headshot.jpg?fit=768%2C960&ssl=1",
+        "mail": "clucero@lcdc.net",
+        "linkedin": "",
+        "btn-link": "https://www.lcdc.net/our-team/carlos-lucero/"
+    },
+    {
+        "name": "Brandon Johnson",
+        "profession": "Senior Property Manager",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/10/LCDC-3-of-3.jpg?fit=1638%2C2048&ssl=1",
+        "mail": "kfranklin@lcdc.net",
+        "linkedin": "",
+        "btn-link": ""
+    },
+    {
+        "name": "Janet Gonzalez",
+        "profession": "Property Manager",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Janet1-768x960-1.jpeg?fit=768%2C960&ssl=1",
+        "mail": "jgonzalez@lcdc.net",
+        "linkedin": "",
+        "btn-link": "https://www.lcdc.net/our-team/janet-gonzalez/"
+    },
+    {
+        "name": "Sherron Bond",
+        "profession": "Assistant Property Manager",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/10/LCDC-1-of-2.jpg?fit=1638%2C2048&ssl=1",
+        "mail": "sbond@lcdc.net",
+        "linkedin": "",
+        "btn-link": ""
+    },
+    {
+        "name": "George Clopton",
+        "profession": "Supervisor of Maintenance",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/George1-768x960-1.jpeg?fit=768%2C960&ssl=1",
+        "mail": "gclopton@lcdc.net",
+        "linkedin": "",
+        "btn-link": "https://www.lcdc.net/our-team/george-clopton/"
+    },
+    {
+        "name": "Phillip Hodges",
+        "profession": "Maintenance",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/Phillip-Hodges_websize.jpg?fit=1280%2C1600&ssl=1",
+        "mail": "phodges@lcdc.net",
+        "linkedin": "",
+        "btn-link": ""
+    },
+    {
+        "name": "John Raggs",
+        "profession": "Maintenance",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/07/John-Raggs_websize.jpg?fit=1280%2C1600&ssl=1",
+        "mail": "jraggs@lcdc.net",
+        "linkedin": "",
+        "btn-link": ""
+    },
+    {
+        "name": "Cleve Jackson",
+        "profession": "Maintenance",
+        "image": "https://i0.wp.com/www.lcdc.net/wp-content/uploads/2023/10/LCDC-1-of-3.jpg?fit=1638%2C2048&ssl=1",
+        "mail": "phodges@lcdc.net",
+        "linkedin": "",
+        "btn-link": ""
+    }
+]

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="mySelect" onchange="updateInput()">
+        <option value="" selected disabled hidden>Type or Select an Option</option>
+        <option value="option1">Option 1</option>
+        <option value="option2">Option 2</option>
+        <option value="option3">Option 3</option>
+        <option value="option4">Option 4</option>
+        <option value="option5">Option 5</option>
+        <option value="option6">Option 6</option>
+        <option value="other">Other</option>
+      </select>
+      
+      <input type="text" id="otherOption" style="display: none;" placeholder="Enter your option">
+      
+      <script>
+        function updateInput() {
+          var selectField = document.getElementById("mySelect");
+          var inputField = document.getElementById("otherOption");
+      
+          if (selectField.value === "other") {
+            inputField.style.display = "inline";
+            inputField.value = ""; // Clear the input field
+            inputField.focus(); // Set focus to the input field
+          } else {
+            inputField.style.display = "none";
+          }
+        }
+      </script>
+      
+</body>
+</html>

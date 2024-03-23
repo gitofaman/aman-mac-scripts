@@ -1,0 +1,24 @@
+.button-chevron-wrap {
+    color: #024eaf;
+}
+.chevron-blue .button-chevron-wrap {
+    color: #024eaf;
+}
+.chevron-purple .button-chevron-wrap {
+    color: #F6D1F8;
+}
+.chevron-red .button-chevron-wrap {
+    color: #FBC7C4;
+}
+.chevron-green .button-chevron-wrap {
+    color: #AFEAC2;
+}
+.chevron-skyblue .button-chevron-wrap {
+    color: #86ECFF;
+}
+.chevron-purple:hover, .chevron-red:hover, .chevron-green:hover, .chevron-skyblue:hover {
+    color: #111;
+}
+.button.is-secondary .button-chevron-wrap {
+    color: #FCE0A0;
+}

@@ -1,0 +1,102 @@
+/* defaults start */
+.v3-card-content {
+    display: none!important;
+}
+.v3-block.fifth-block .top-bottom {
+    display: none!important;
+}
+/* defaults end */
+
+
+
+/* 50% widths */
+.v3-block.v-50 .v3-card-content.v-50 {
+    display: block!important;
+}
+/* First Block */
+.v3-block.first-block.v-50 .v3-card-content-wrap {
+    width: 20%;
+}
+/* Second Block */
+/* Third Block */
+/* Fourth Block */
+/* Fifth Block */
+
+
+
+
+/* 25% Widths */
+.v3-block.v-25 .v3-card-content.v-25 {
+    display: block!important;
+}
+/* First Block */
+/* Second Block */
+/* Third Block */
+/* Fourth Block */
+.v3-block.forth-block.v-25 .v3-card-content-wrap.purple-card {
+    display: block;
+}
+/* Fifth Block */
+.v3-block.fifth-block.v-25 .date-time {
+    display: none;
+}
+.v3-block.fifth-block.v-25 .date-time.top-bottom {
+    display: flex!important;
+}
+
+
+
+
+/* 75% Widths */
+.v3-block.v-75 .v3-card-content.v-75 {
+    display: block!important;
+}
+/* First Block */
+.v3-block.first-block.v-75 .v3-card-content-wrap {
+    display: grid!important;
+}
+.v3-block.first-block.v-75 .v3-card {
+    overflow: auto;
+}
+.v3-card::-webkit-scrollbar {
+  display: none;
+}
+/* Second Block */
+/* Third Block */
+/* Fourth Block */
+/* Fifth Block */
+.v3-block.fifth-block.v-75 .v3-card {
+    background-color: #A1A1B6!important;
+}
+
+
+
+
+/* 12.5% Widths */
+
+
+/*
+0 - 25, 50, 75
+1 - 25, 12.5, 50
+2 - 25, 12.5, 50
+3 - 50, 25
+4 - 50, 25, 75
+*/
+[el-state="active"] .v3-card {
+	overflow: auto;
+}
+.v3-card:last-child {
+    margin-bottom: 1em;
+}
+.v3-card {
+	margin-bottom: 0px!important;
+}
+
+/* active inactive states start */
+[el-state='active'] .inactive-el {
+    display: none!important;
+}
+[el-state='inactive'] .inactive-el {
+    display: block!important;
+}
+/* active inactive state end */
