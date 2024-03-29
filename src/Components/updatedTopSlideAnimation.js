@@ -1,10 +1,12 @@
 //scrolltrigger and gsap should both be included in script tag
+// also provides the ability to add on offsets
 $('[anime-parent]').each(function(){
     var $mainEl = $(this);
     var move = {};
     var moveVal = 40;
     var duration = parseFloat($(this).attr('duration')) || 0.5; // Default duration is 0.5 seconds
     var customMoveVal = $(this).attr('moveVal'); // Custom moveVal if provided
+    var percentToAppear = $mainEl.attr('offset') || '75%'
 
     // Update moveVal if customMoveVal is provided
     if (customMoveVal) {
@@ -28,8 +30,6 @@ $('[anime-parent]').each(function(){
         case '-y':
             move.y = -moveVal;
             break;
-        case 'fade':
-            move.y = 0
         default: 
             move.y = moveVal;
             break;
@@ -43,7 +43,7 @@ $('[anime-parent]').each(function(){
         ease: "power4",
         scrollTrigger: {
             trigger: $mainEl,
-            start: 'top 75%'
+            start: `top ${percentToAppear}`
         }
     });
 });
