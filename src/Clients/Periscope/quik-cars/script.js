@@ -1,15 +1,27 @@
 $(document).ready(function() {
-    var paragraphs = $('.w-richtext').find('p');
-    var numParagraphs = paragraphs.length;
-    var numCTAs = 3;
-    var interval = Math.ceil(numParagraphs / (numCTAs + 1));
-
-    for (var i = 0; i < numCTAs; i++) {
-        var index = (i + 1) * interval - 1; // -1 because index starts from 0
-        if (index < numParagraphs) {
-            $(paragraphs[index]).after($('.blog-cta').eq(0).clone());
+    $(document).ready(function(){
+        $('#yearselect option:not(:first-child)').each(function(){
+            $(this).insertBefore($('#yearselect option:first-child'));
+        });
+    });
+});
+$(document).ready(function(){
+    var selectField = $('#yearselect');
+    var firstOption = selectField.find('option:first');
+    
+    firstOption.insertAfter(selectField.find('option:last'));
+    $('[zipcode]').css({
+        display: 'none'
+    })
+    $('#stateselect').on('change', function(){
+        if(this.value !== ''){
+            $('[zipcode]').css({
+                display: 'block'
+            })
         } else {
-            break; // Break loop if all CTAs are placed
+            $('[zipcode]').css({
+                display: 'none'
+            })
         }
-    }
+    })
 });
