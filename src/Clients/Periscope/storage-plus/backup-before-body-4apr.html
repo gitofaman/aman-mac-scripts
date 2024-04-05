@@ -1,0 +1,428 @@
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5G6RM66"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T66HNXWD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <script>
+    var createFunctioningSlider = (slider) => {
+        var sliderDots, sliderDotActiveClassName;
+        var sliderDotActiveClassName = 'slider-dot-acitve';
+        var sliderWrppr = slider.querySelector("[aria-wrpr=true]");
+        var sliderNextArrow = slider.querySelector("[aria-next=true]");
+        var sliderPrevArrow = slider.querySelector("[aria-prev = true]");
+        var slideMoveDuration = 500
+        var timeToMove = parseInt(slider.getAttribute('move-time'))
+        sliderDots = []
+        if(!!timeToMove) {
+            slideMoveDuration = timeToMove
+        }
+        var sliderElements = sliderWrppr.querySelectorAll(
+            "." + sliderWrppr.firstChild.classList[0]
+        );
+        var currentSliderNo = 0;
+    
+        if(slider.hasAttribute('slider-dot-active-class')) {
+            sliderDotActiveClassName = slider.getAttribute('slider-dot-active-class')
+        }
+    
+        //going to a certain slide using this function
+        var goToSlide = (i, goingPos) => {
+            var sliderElementsAreaWidth =
+                sliderElements[1].getBoundingClientRect().x -
+                sliderElements[0].getBoundingClientRect().x;
+            var lastElement = sliderElements[sliderElements.length - 1];
+            var lastElementPos =
+                lastElement.getBoundingClientRect().x + lastElement.offsetWidth;
+            var isLastElementInView = lastElementPos < window.innerWidth
+            if(goingPos !== "dont-use") {
+                if (isLastElementInView > 0 && goingPos === "next") {
+                    i = 0;
+                }
+            }
+    
+            anime({
+                targets: sliderWrppr,
+                translateX: -i * sliderElementsAreaWidth,
+                duration: slideMoveDuration,
+                easing: 'easeOutSine'
+            })
+            currentSliderNo = i;
+            if(sliderDots.length) {
+                sliderDots.forEach(sliderDot => {
+                    var currentSlideDotIndex = sliderDots.indexOf(sliderDot)
+                    if(currentSlideDotIndex === i) {
+                        sliderDot.classList.add(sliderDotActiveClassName)
+                    } else {
+                        sliderDot.classList.remove(sliderDotActiveClassName)
+                    }
+                })
+            }
+        };
+    
+        var goToNextSlide = () => {
+            if (currentSliderNo === sliderElements.length - 1) {
+                goToSlide(0, "next");
+            } else {
+                goToSlide(currentSliderNo + 1, "next");
+            }
+        };
+    
+        var goToPrevSlide = () => {
+            if (currentSliderNo === 0) {
+                goToSlide(sliderElements.length - 1, "prev");
+            } else {
+                goToSlide(currentSliderNo - 1, "prev");
+            }
+        };
+    
+        sliderNextArrow.addEventListener("click", () => {
+            goToNextSlide();
+        });
+    
+        sliderPrevArrow.addEventListener("click", () => {
+            goToPrevSlide();
+        });
+        //auto function
+        if (slider.hasAttribute('auto-slide-duration')) {
+            var playCondition = 1
+            var isPaused = false;
+            var autoSlideTime = parseInt(slider.getAttribute('auto-slide-duration'))
+            var pauseTime = 6 * autoSlideTime
+            if (slider.hasAttribute('pause-time')) {
+                var pauseTime = parseInt(slider.getAttribute('pause-time'))
+            }
+    
+            function autoIntervalFunction(time, func) {
+                //playCondition => 0 means stop, 1 means play
+                var autoInterval = setInterval(() => {
+                    if (!isPaused) {
+                        if (playCondition === 1) {
+                            func()
+                        } else {
+                            clearInterval(autoInterval)
+                        }
+                    }
+                }, time)
+            }
+            //to pause for a certain time
+            var autoSliderTimeout;
+            var pauseInterval = () => {
+                isPaused = true;
+                clearTimeout(autoSliderTimeout)
+                autoSliderTimeout = setTimeout(() => {
+                    isPaused = false;
+                }, pauseTime)
+            }
+            autoIntervalFunction(autoSlideTime, goToNextSlide)
+            //pause on hover
+            sliderWrppr.addEventListener('mouseover', () => {
+                isPaused = true;
+            })
+            sliderWrppr.addEventListener('mouseout', () => {
+                isPaused = false;
+            })
+            //pause on arrow click for a certain time
+            sliderNextArrow.addEventListener('click', pauseInterval)
+            sliderPrevArrow.addEventListener('click', pauseInterval)
+            sliderElements.forEach(slideElement => {
+                slideElement.addEventListener('click', () => {
+                    isPaused = true
+                })
+            })
+        }
+    
+        if(slider.hasAttribute('slider-dots-class')) {
+            var sliderDotClass = slider.getAttribute('slider-dots-class')
+            sliderDotClass = '.' + sliderDotClass
+            var sliderDots = slider.querySelectorAll(sliderDotClass)
+            var sliderDotContainer = sliderDots[0].parentElement;
+            var resistingNo = 0
+            sliderDotContainer.querySelectorAll(sliderDotClass).forEach(sliderDot=>{
+                if(resistingNo!==0) {
+                    sliderDot.remove()
+                }
+                resistingNo++;
+            })
+        
+            while (sliderDotContainer.querySelectorAll(sliderDotClass).length<sliderElements.length) {
+                var sliderDotClone = sliderDots[0].cloneNode(true)
+                sliderDotContainer.appendChild(sliderDotClone)
+            }
+    
+            sliderDots = Array.from(sliderDotContainer.querySelectorAll(sliderDotClass))
+            sliderDots.forEach(sliderDot=>{
+                sliderDot.addEventListener('click', ()=> {
+                    goToSlide(sliderDots.indexOf(sliderDot), 'dont-use')
+                })
+            })
+        }
+    
+        goToSlide(0, 'dont-use')
+    };
+    
+    var sliders = document.querySelectorAll("[aria-slider=true]");
+    sliders.forEach((slider) => {
+        createFunctioningSlider(slider);
+    });
+    </script>
+    <script>
+    //Alternate Animations script
+    var animatedParents = Array.from(document.querySelectorAll('[anime-parent]'))
+    animatedParents.forEach(animeParent=>{
+        if(animeParent) {
+            animeParent.childNodes.forEach(childNode=>{
+                childNode.setAttribute('anime-child', 'true')
+            })
+        }
+    })
+    
+    
+    
+    var alternateAnimations = arr => {
+        duration = 400
+        for(i=0;i<arr.length;i++) {
+            slideUpAnimate(arr[i], duration, (duration*(i+1))/2, 0, 1)
+        }
+    }
+    
+    var slideUpAnimate = (el, duration, delay, yTranlate, opacity) => {
+        setTimeout(()=>{
+            anime({
+                targets: el,
+                translateY: yTranlate,
+                opacity: opacity,
+                duration: duration,
+                easing: 'easeOutSine'
+              });
+        }, delay)
+    }
+    
+    var isElementInView = (el) => {
+        var percentVal = 80;
+        var windowHeight = window.innerHeight
+        var spaceToCover = Math.round(windowHeight * percentVal/100)
+        var spaceFromEachSides = (windowHeight - spaceToCover)/2;
+        var elTop = el.getBoundingClientRect().top
+        // var elBottom = el.getBoundingClientRect().bottom
+        if (elTop + el.offsetHeight > spaceFromEachSides && elTop < windowHeight - spaceFromEachSides) {
+            return true;
+        }
+        return false
+    }
+    
+    animatedParents.forEach(parent=>{
+        var animatedChilds = parent.querySelectorAll('[anime-child=true]')
+        animatedChilds.forEach(child => {
+            slideUpAnimate(child, 0, 0, 20, 0)
+        })
+    })
+    
+    function animateIfParentInView() {
+        animatedParents.forEach(parentEl=>{
+            if(isElementInView(parentEl)) {
+                alternateAnimations(parentEl.querySelectorAll('[anime-child=true]'))
+                var thisParentIndex = animatedParents.indexOf(parentEl)
+                animatedParents.splice(thisParentIndex, 1)
+            }
+        })
+    }
+    
+    window.addEventListener('scroll', animateIfParentInView)
+    animateIfParentInView()
+    animateIfParentInView()
+    </script>
+    <script>
+    var spaceTabs, spaceOptions;
+    spaceTabs = Array.from(document.querySelectorAll('.sv-tab'));
+    spaceOptions = Array.from(document.querySelectorAll('.sv-content-parent'));
+    
+    var addClassToOne = (el, elArray) => {
+        elArray.forEach(eachEl=>{
+            if(eachEl !== el) {
+                eachEl.classList.remove('is--active')
+            } else {
+                eachEl.classList.add('is--active')
+            }
+        })
+    }
+    
+    spaceTabs.forEach(spaceTab=>{
+        var thisSpaceOption = spaceOptions.filter(spaceOption=> {
+            return spaceOption.querySelector('.sv-heading').innerText.toLowerCase() === spaceTab.innerText.toLowerCase()
+        })[0]
+        spaceTab.addEventListener('click', ()=>{
+            addClassToOne(spaceTab, spaceTabs)
+            addClassToOne(thisSpaceOption, spaceOptions)
+        })
+    })
+    spaceTabs[0].click()
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
+    <script>
+    $('.swiper-slider').each(function(index){
+        const swiper = new Swiper($(this).find('.swiper')[0], {
+            slidesPerView: "auto",
+            speed: 500,
+            keyboard: true,
+            pagination: {
+                el: $(this).find('.swiper-bullet-wrapper')[0],
+                bulletActiveClass: "is-active",
+                bulletClass: "swiper-bullet",
+                bulletElement: "button",
+                clickable: true
+            },
+            navigation: {
+                nextEl: $(this).find(".swiper-next")[0],
+                prevEl: $(this).find(".swiper-prev")[0],
+                disabledclass: "is-disabled"
+            },
+            scrollbar: {
+                el: $(this).find(".swiper-drag-wrapper")[0],
+                draggable: true,
+                dragClass: 'swiper-drag',
+                snapOnRelease: true
+            }
+        })
+    })
+    </script>
+    <script>
+    const forms = document.querySelectorAll('form')
+    forms.forEach(form=>{
+        var mediumField = form.querySelector('[name="medium"]')
+        if(!mediumField) { //if medium field doesn't exist in the form, proceeds creating medium input
+            const mediumInput = document.createElement('input')
+            mediumInput.name = 'medium'
+            mediumInput.style.display = 'none'
+            form.prepend(mediumInput)
+            mediumField = form.querySelector('[name="medium"]')
+        }
+        const thisSiteUrl = new URL(window.location.href)
+        const utmSourceParam = thisSiteUrl.searchParams.get('utm_source')
+        const utmMediumParam = thisSiteUrl.searchParams.get('utm_medium')
+        const utmCampaignParam = thisSiteUrl.searchParams.get('utm_campaign')
+        const gclidParam = thisSiteUrl.searchParams.get('gclid')
+        var valueToInput = ''
+        if (!!utmSourceParam) { //checks if utm_source param exists, !!utmSourceParam gives true if exists
+            valueToInput += ` utm_source=${utmSourceParam},`
+        }
+        if (!!utmMediumParam) { //checks if utm_medium param exists, !!utmMediumParam gives true if exists
+            valueToInput += ` utm_medium=${utmMediumParam}`
+        }
+        if (!!utmCampaignParam) {
+            valueToInput += ` utm_campaign=${utmCampaignParam}`
+        }
+        if (!!gclidParam) {
+            valueToInput += ` gclid=${gclidParam}`
+        }
+        mediumField.value = valueToInput;
+    })
+    </script>
+    <script>
+    //working
+    var pageLinks = document.querySelectorAll('a');
+    var acceptedParams = ['utm_campaign', 'utm_medium', 'utm_source', 'gclid', 'targetid', 'utm_term'];
+    
+    function isOriginSameAsLocation(url) {
+        var pageLocation = window.location;
+        var URL_HOST_PATTERN = /(\w+:)?(?:\/\/)([\w.-]+)?(?::(\d+))?\/?/;
+        var urlMatch = URL_HOST_PATTERN.exec(url) || [];
+        var urlparts = {
+            protocol: urlMatch[1] || '',
+            host: urlMatch[2] || '',
+            port: urlMatch[3] || ''
+        };
+    
+        function defaultPort(protocol) {
+            return { 'http:': 80, 'https:': 443 }[protocol];
+        }
+    
+        function portOf(location) {
+            return location.port || defaultPort(location.protocol || pageLocation.protocol);
+        }
+    
+        return !!(
+            (urlparts.protocol && (urlparts.protocol == pageLocation.protocol)) &&
+            (urlparts.host && (urlparts.host == pageLocation.host)) &&
+            (urlparts.host && (portOf(urlparts) == portOf(pageLocation)))
+        );
+    }
+    
+    var paramSlug = '';
+    
+    // Construct paramSlug with existing parameters from current URL
+    acceptedParams.forEach(param => {
+        var currentUrl = new URL(window.location.href);
+        var paramVal = currentUrl.searchParams.get(param);
+        if (!!paramVal) {
+            if (paramSlug.indexOf('?') > -1) {
+                paramSlug = paramSlug + `&${param}=${paramVal}`;
+            } else {
+                paramSlug = `?${param}=${paramVal}`;
+            }
+        }
+    });
+    
+    // Modify links that point to the same domain as the current page
+    pageLinks.forEach(pagelink => {
+        var pageLinkUrl = pagelink.getAttribute('href');
+        // Check if the link points to the same domain
+        if (isOriginSameAsLocation(pageLinkUrl)) {
+            var finalLinkUrl = pageLinkUrl;
+            // Append paramSlug to the link URL if it's not empty
+            if (paramSlug) {
+                // Check if the link URL already contains query parameters
+                if (finalLinkUrl.indexOf('?') > -1) {
+                    finalLinkUrl += '&' + paramSlug.substring(1); // Skip the leading '?'
+                } else {
+                    finalLinkUrl += paramSlug;
+                }
+            }
+            // Update the href attribute of the link
+            pagelink.setAttribute('href', finalLinkUrl);
+        }
+    });
+    
+    </script>
+    <script>
+    //formats the phone number while input
+    var inputTels = document.querySelectorAll('input[type="tel"]')
+    var formattedNumber = (phoneNo) => {
+        var withoutSpaceNum = phoneNo.replaceAll(' ', '')
+        var numberToReturn = ''
+        if(withoutSpaceNum.length>7) {
+            numberToReturn = withoutSpaceNum.slice(0, 4) + ' ' + withoutSpaceNum.slice(4,7) + ' ' + withoutSpaceNum.slice(7)
+            return numberToReturn
+        }
+        if(withoutSpaceNum.length>4) {
+            numberToReturn = withoutSpaceNum.slice(0,4) + ' ' + withoutSpaceNum.slice(4)
+            return numberToReturn;
+        }
+        if(withoutSpaceNum.length<=4) {
+            return withoutSpaceNum;
+        }
+    }
+    inputTels.forEach(inputTel=>{
+        inputTel.addEventListener('keyup', (e)=>{
+            e.target.value = formattedNumber(e.target.value)
+        })
+    })
+    </script>
+    <script>
+    $(document).ready(function() {
+        $('[data-name]').each(function() {
+            // to ensure name of form fields are not having numbers at then end
+            var originalName = $(this).attr('data-name');
+            var newName = originalName.replace(/\s*\d+$/, ''); // Removes numbers at the end of the string
+            $(this).attr('data-name', newName);
+            var updatedName = newName.replace(' ', '-')
+            $(this).attr('name', updatedName)
+            $(this).attr('id', updatedName)
+        });
+    });
+    </script>
+    <script src="http://localhost:3000/Clients/Periscope/storage-plus/script.js"></script>
