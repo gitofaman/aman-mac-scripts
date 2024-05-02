@@ -1,0 +1,25 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/3.4.0/js/blueimp-gallery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/blueimp-gallery/3.4.0/css/blueimp-gallery.min.css"/>
+<script>
+    // requirements - 
+    // the image should be wrapped in a "A Tag" element
+    // A tag element should have same source as image
+    // To group you'd want to make sure that the parent of collective a tags should be same
+    $(document).ready(function(){
+    var ic = `img-container`
+
+    $(`[${ic}]`).each(function(){
+        var main = $(this)
+        main.on('click', 'a', function(event) {
+            event.preventDefault();
+            var target = event.target || event.srcElement;
+            var link = target.src ? $(target).parent() : $(target);
+            // console.log(link)
+            var options = { index: link, event: event };
+            var links = main.find('a');
+            console.log(links)
+            blueimp.Gallery(links, options);
+        });
+    })
+})
+</script>
