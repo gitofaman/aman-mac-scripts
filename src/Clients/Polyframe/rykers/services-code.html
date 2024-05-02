@@ -1,0 +1,177 @@
+<script>
+    //service desktop script
+    $(document).ready(function () {
+        if ($(window).width() > 767) {
+            var checkboxSelector = '.filter-checkbox input'
+            // When any checkbox is clicked
+            var updateSectionView = () => {
+                var allSelected = $(checkboxSelector).eq(0).prop('checked') || $(checkboxSelector +
+                    ':checked').length === 0;
+
+                var serviceSections = $('.section-services-parent').find('[class*=section]')
+                if (!allSelected) {
+                    $(checkboxSelector).slice(1).each(function () {
+                        var i = Array.from($(checkboxSelector).slice(1)).indexOf(this)
+                        var checked = $(this).prop('checked')
+                        console.log(i, checked)
+                        if (checked) {
+                            console.log("displaying this")
+                            serviceSections.eq(i).css('display', 'block')
+                        } else {
+                            console.log("hiding this")
+                            serviceSections.eq(i).css('display', 'none')
+                        }
+                    })
+                } else {
+                    serviceSections.css('display', 'block')
+                }
+                gsap.fromTo('.section-services-parent', {
+                    opacity: 0,
+                    y: 100
+                }, {
+                    opacity: 1,
+                    y: 0,
+                    onComplete: function () {
+                        scrollToElementTop(document.querySelector(".section-services-filter"),
+                            0)
+                    }
+                })
+
+            }
+
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var tabIndex = urlParams.get('tab');
+
+            if (tabIndex !== null) {
+                tabIndex = parseInt(tabIndex);
+                $(checkboxSelector).eq(tabIndex).prop('checked', true);
+            } else {
+                $(checkboxSelector).eq(0).prop('checked', true)
+            }
+
+            updateSectionView()
+
+            $(checkboxSelector).on("change", function () {
+                if ($(this).prop("name") === "all") {
+                    // If "ALL" is checked, uncheck all other checkboxes
+                    $(checkboxSelector).not(this).prop("checked", false);
+                } else {
+                    // If any other checkbox is checked, uncheck the "ALL" checkbox
+                    $("input[name='all']").prop("checked", false);
+
+                    // Check if all other checkboxes except the first one are checked
+                    var allOthersChecked = true;
+                    $(checkboxSelector).not("[name='all']").each(function () {
+                        if (!$(this).prop("checked")) {
+                            allOthersChecked = false;
+                            return false; // Exit the loop early if any checkbox is unchecked
+                        }
+                    });
+
+                    // If all other checkboxes except the first one are checked, check only the first one
+                    if (allOthersChecked) {
+                        $(checkboxSelector).eq(0).prop("checked", true);
+                        $(checkboxSelector).slice(1).prop("checked", false);
+                    }
+                }
+                updateSectionView()
+
+            });
+
+            $(checkboxSelector + ':first').click(function () {
+                if ($(this).prop('checked')) {
+                    // If the first checkbox is checked, prevent unchecking it
+                    return true;
+
+                } else {
+                    return false;
+
+                }
+            });
+        }
+    });
+</script>
+<script>
+    //service mobile script
+    $(document).ready(function () {
+        if ($(window).width() <= 767) {
+            $('.section-services-parent').find('[class*=section]').each(function () {
+                var header1 = $(this).find('.header_1 .service-content-wrap');
+                var content = $(this).find('.grid-3col.space-expanded');
+
+                // Move content to header1
+                content.appendTo(header1);
+            });
+
+
+
+            $('.header_1').each(function () {
+                var serviceOpen;
+                var el = $(this)
+                var osTl = gsap.timeline()
+
+                var openService = () => {
+                    serviceOpen = true;
+                    osTl.to(el.find('.service-content'), {
+                        height: 'auto',
+                        opacity: 1,
+                    }).to(el.find('.arrow-down'), {
+                        rotate: 180
+                    })
+                }
+                var closeService = () => {
+                    serviceOpen = false;
+                    osTl.to(el.find('.service-content'), {
+                        height: '0',
+                        opacity: 0,
+                    }).to(el.find('.arrow-down'), {
+                        rotate: 0
+                    })
+                }
+
+                closeService()
+
+                el.find('.service-toggle').on('click', function () {
+                    if (!serviceOpen) {
+                        openService()
+                    } else {
+                        closeService()
+                    }
+                })
+
+            })
+
+            var urlParams = new URLSearchParams(window.location.search);
+            var tabIndex = urlParams.get('tab');
+
+            if (tabIndex !== null) {
+                tabIndex = parseInt(tabIndex);
+                $('.service-toggle').eq(tabIndex - 1).click()
+                console.log('clicked and scrolling')
+                setTimeout(function () {
+                    scrollToElementTop(document.querySelectorAll('.service-toggle')[tabIndex - 1], 0)
+                }, 500)
+            }
+
+        }
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        var main = $('.button.is-fixed-btn');
+        var siblingBtn = $('.is-bg-mirrow');
+
+        main.on('mouseover', function () {
+            main.addClass('expanded');
+            main.find('*').addClass('expanded')
+            main.siblings().addClass('expanded');
+        });
+
+        main.on('mouseout', function () {
+            main.removeClass('expanded');
+            main.find('*').removeClass('expanded')
+            main.siblings().removeClass('expanded');
+        });
+    })
+</script>
