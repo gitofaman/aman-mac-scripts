@@ -1,0 +1,28 @@
+.blueimp-gallery .close {
+    background-image: url("https://uploads-ssl.webflow.com/65686393f3d329d600da8674/6638988ae046eb74a2662f91_Frame.svg")!important;
+    background-size: 50% 50% !important;
+    opacity: 1!important;
+}
+.blueimp-gallery .prev,.next {
+    border-color: transparent!important;
+    opacity: 1!important;
+}
+.blueimp-gallery .play-pause {
+    background-image: url("https://uploads-ssl.webflow.com/65686393f3d329d600da8674/6638988867a9dea81209b223_Frame%20(1).svg")!important;
+    background-size: 50% 50% !important;
+    opacity: 1!important;
+}
+.blueimp-gallery .play-pause[aria-pressed=true] {
+    background-image: url("https://uploads-ssl.webflow.com/65686393f3d329d600da8674/66389886c1d499aeb9b6debf_Frame%20(2).svg")!important;
+    background-size: 50% 50% !important;
+    opacity: 1!important;
+}
+
+.blueimp-gallery-playing>.play-pause {
+    background-position: 0px 0px!important;
+}
+.blueimp-gallery>.indicator>li {
+    /* background-image: none!important;
+    background-color: white; */
+    background-size: cover!important;
+}
