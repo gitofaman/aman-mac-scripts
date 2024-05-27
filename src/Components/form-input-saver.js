@@ -19,12 +19,17 @@ function pasteInputs(data) {
 }
 
 var saveData = {
-    "name": "Customer Customer",
-    "email": "customer@mastercard.com",
-    "cardnum": "5555555555554444",
-    "expmonth": "11",
-    "expyear": "35",
-    "cvc": "123"
+    "Form Location": "https://peak-cleaning.webflow.io/booking-draft",
+    "First-Name": "Dev",
+    "Last-Name": "Test",
+    "Phone": "0987654321",
+    "name-2": "devtest@test.com",
+    "Address": "21 Dev Test Street",
+    "Square-Feet": "21m",
+    "Number-of-Bedrooms": "3",
+    "Number-of-Bathrooms": "2",
+    "Frequency": "One Time",
+    "Notes-Comments": "This is a dev test, please ignore"
 }
 
 pasteInputs(saveData)

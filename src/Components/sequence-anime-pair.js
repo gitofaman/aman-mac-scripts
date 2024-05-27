@@ -140,7 +140,7 @@ $(document).ready(function(){
                     var totalSpan = $el.find('.spanned-text').length;
                     apTl.from($el.find('.spanned-text'), {
                         top: 100,
-                        opacity: 0,
+                        opacity: 0.4,
                         duration: 0.5,
                         stagger: 1/totalSpan,
                         onComplete: function(){

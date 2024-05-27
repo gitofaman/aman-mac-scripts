@@ -12,7 +12,6 @@ var animateNumber = (stat) => {
             console.log('animation completed')
         }
       });
-
 }
 
 var statsHead = document.querySelectorAll('input.stats-head')
