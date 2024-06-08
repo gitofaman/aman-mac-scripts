@@ -20,16 +20,16 @@ function pasteInputs(data) {
 
 var saveData = {
     "Form Location": "https://peak-cleaning.webflow.io/booking-draft",
-    "First-Name": "Dev",
-    "Last-Name": "Test",
+    "FirstName": "Test",
+    "LastName": "Test",
     "Phone": "0987654321",
-    "name-2": "devtest@test.com",
-    "Address": "21 Dev Test Street",
-    "Square-Feet": "21m",
-    "Number-of-Bedrooms": "3",
-    "Number-of-Bathrooms": "2",
-    "Frequency": "One Time",
-    "Notes-Comments": "This is a dev test, please ignore"
+    "Email": "test@devtest.com",
+    "HomeAddress1": "Test Address",
+    "HomeSquareFeet": "23",
+    "HomeBedrooms": "2",
+    "HomeFullBathrooms": "2",
+    "Frequency": "Recurring",
+    "Notes": "this is a test please ignore."
 }
 
 pasteInputs(saveData)
