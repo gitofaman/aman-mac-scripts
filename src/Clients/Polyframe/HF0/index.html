@@ -1,0 +1,74 @@
+<script>
+    $('.swiper-slider').each(function(index){
+    var updateSlideText = () => {
+        $('.hero-content [startup-name]').text($('.swiper-slide-active').find('[startup-name]').text())
+        $('.hero-content [location]').text($('.swiper-slide-active').find('[location]').text())
+    }
+
+    var slideStartup = (where) => {
+        if(where === "left") {
+            // console.log("Hero content hiding now")
+            gsap.to($('.hero-content').children(),{
+                y: '20px',
+                opacity: 0,
+                duration: 0.2,
+            })
+        } else {
+            // console.log("Hero content showing now")
+            gsap.to($('.hero-content').children(),{
+                y: '0px',
+                opacity: 1,
+                duration: 0.2,
+            })
+        }
+    }
+
+    const swiper = new Swiper($(this).find('.swiper')[0], {
+        slidesPerView: "auto",
+        speed: 500,
+        keyboard: true,
+        slideToClickedSlide: true,
+        pagination: {
+            el: $(this).find('.swiper-bullet-wrapper')[0],
+            bulletActiveClass: "is-active",
+            bulletClass: "swiper-bullet",
+            bulletElement: "button",
+            clickable: true
+        },
+        navigation: {
+            nextEl: $(this).find(".swiper-next")[0],
+            prevEl: $(this).find(".swiper-prev")[0],
+            disabledclass: "is-disabled"
+        },
+        scrollbar: {
+            el: $(this).find(".swiper-drag-wrapper")[0],
+            draggable: true,
+            dragClass: 'swiper-drag',
+            snapOnRelease: true
+        }
+    })
+    var setcurrentSlideNo = () => {
+        $('[current-slide]').text($('.swiper-slide-active').index() + 1)        
+    }
+    $('[final-slide]').text($('.swiper-slide').length)
+    swiper.on('slideChangeTransitionStart', function() {
+        gsap.to('.swiper-slide', {
+            opacity: 0
+        })
+        slideStartup("left")
+    })
+    swiper.on('slideChangeTransitionEnd', function() {
+        setcurrentSlideNo()
+        gsap.to('.swiper-slide-active', {
+            opacity: 1
+        })
+        updateSlideText()
+        slideStartup("right")
+    })
+    setcurrentSlideNo()
+    updateSlideText()
+
+})
+
+// alert('working')
+    </script>

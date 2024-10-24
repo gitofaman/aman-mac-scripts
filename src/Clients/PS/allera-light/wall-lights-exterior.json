@@ -1,0 +1,541 @@
+[
+    {
+        "productName": "Astro Up/Down Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured Grey",
+                "Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "Basc Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White"
+            ],
+            [
+                "Select Model",
+                "Basc Fixed One Small",
+                "Basc Fixed One Medium",
+                "Basc Fixed Two Small",
+                "Basc Fixed Two Medium"
+            ]
+        ]
+    },
+    {
+        "productName": "Fold 10 Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Brass",
+                "Copper",
+                "White",
+                "Galvanized",
+                "Corten",
+                "Black"
+            ]
+        ]
+    },
+    {
+        "productName": "Front Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "White"
+            ],
+            [
+                "Select Size",
+                "Front 26",
+                "Front 36"
+            ]
+        ]
+    },
+    {
+        "productName": "Iris Wall Light Series",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White"
+            ],
+            [
+                "Select Size",
+                "Small 5W",
+                "Medium 8W",
+                "Large 15W"
+            ]
+        ]
+    },
+    {
+        "productName": "Marc Up/Down Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "Nola Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "Onyx One Spotlight",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White",
+                "Textured Grey"
+            ]
+        ]
+    },
+    {
+        "productName": "Onyx Three Spotlight",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White",
+                "Textured Grey"
+            ]
+        ]
+    },
+    {
+        "productName": "Axis Surface Mounted Downlight",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small 7W",
+                "Medium 15W"
+            ],
+            [
+                "Select Finish Colour",
+                "UV Textured Black",
+                "UV Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "Bianco Up/Down Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "Bode Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish",
+                "Iron",
+                "Old Brass"
+            ]
+        ]
+    },
+    {
+        "productName": "Cloud Interior/Exterior Wall Light",
+        "selectOptions": []
+    },
+    {
+        "productName": "Fold 15 Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Brass",
+                "Copper",
+                "Galvanized",
+                "Corten",
+                "Black",
+                "White"
+            ]
+        ]
+    },
+    {
+        "productName": "Front Single Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "White"
+            ]
+        ]
+    },
+    {
+        "productName": "Orb Ledge Wall Light",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Medium"
+            ]
+        ]
+    },
+    {
+        "productName": "Pluto Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black",
+                "Brass",
+                "Nickel"
+            ],
+            [
+                "Select Model",
+                "Pluto Round Small",
+                "Pluto Round Medium",
+                "Pluto Frame Small",
+                "Pluto Frame Medium"
+            ]
+        ]
+    },
+    {
+        "productName": "Vespa G2 Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black"
+            ],
+            [
+                "Select Size",
+                "Small 18W",
+                "Large 36W"
+            ]
+        ]
+    },
+    {
+        "productName": "Zeron Mini Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black",
+                "Textured Grey"
+            ],
+            [
+                "Select Type",
+                "Fixed One",
+                "Fixed Two"
+            ]
+        ]
+    },
+    {
+        "productName": "Onyx Two Spotlight",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White",
+                "Textured Grey"
+            ]
+        ]
+    },
+    {
+        "productName": "Louis Philippe 1 Wall Light",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Jet Black",
+                "Brass"
+            ]
+        ]
+    },
+    {
+        "productName": "Meridiano Outdoor Wall Light",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Khaki",
+                "Off-white"
+            ]
+        ]
+    },
+    {
+        "productName": "Canto Maxi 2 Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Brass",
+                "Grey",
+                "White",
+                "Galvanized",
+                "Stainless Steel",
+                "Black"
+            ],
+            [
+                "Select Add Globes",
+                "2x Soraa 9.5W GU10 Globes - 2700K",
+                "2x Soraa 9.5W GU10 Globes - 3000K",
+                "Without globes"
+            ]
+        ]
+    },
+    {
+        "productName": "Link Recessed Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured Grey",
+                "Textured White"
+            ],
+            [
+                "Select Style",
+                "Open Face",
+                "Grill Face"
+            ]
+        ]
+    },
+    {
+        "productName": "Paragon Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "Arki 20 Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "Galvanised"
+            ],
+            [
+                "Select Add globes",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Athena G2 Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black"
+            ],
+            [
+                "Select Type",
+                "Fixed One",
+                "Fixed Two"
+            ]
+        ]
+    },
+    {
+        "productName": "Canto 2 Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Brass",
+                "Grey",
+                "White",
+                "Galvanized",
+                "Stainless Steel",
+                "Black"
+            ]
+        ]
+    },
+    {
+        "productName": "Lofoten Wall Light W/Arm",
+        "selectOptions": []
+    },
+    {
+        "productName": "Day Short Exterior Wall Light",
+        "selectOptions": []
+    },
+    {
+        "productName": "Edge Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White",
+                "Textured Grey"
+            ]
+        ]
+    },
+    {
+        "productName": "Tuva Outdoor Wall Light",
+        "selectOptions": [
+            [
+                "Select Glass Finish",
+                "Clear",
+                "White"
+            ],
+            [
+                "Select Shade",
+                "Round",
+                "Flat"
+            ]
+        ]
+    },
+    {
+        "productName": "Onyx Up/Down Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White",
+                "Textured Grey"
+            ]
+        ]
+    },
+    {
+        "productName": "Louis Philippe 7 Wall Light",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Jet Black",
+                "Gold Patina"
+            ]
+        ]
+    },
+    {
+        "productName": "Hunza Wall Spot",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Black",
+                "Copper"
+            ]
+        ]
+    },
+    {
+        "productName": "Kinver Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "White"
+            ],
+            [
+                "Select Size",
+                "Small",
+                "Large"
+            ]
+        ]
+    },
+    {
+        "productName": "Lofoten Wall Light",
+        "selectOptions": []
+    },
+    {
+        "productName": "Brick Wall Light",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Jet Black",
+                "Dark Grey",
+                "White"
+            ]
+        ]
+    },
+    {
+        "productName": "Dusk Short Exterior Wall Light",
+        "selectOptions": []
+    },
+    {
+        "productName": "Aludra Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "Brown Metallic",
+                "Aluminium"
+            ],
+            [
+                "Select Add Globe",
+                "1x Liquid LED GLS 8W E27 Frosted Globe - 2700K",
+                "Without Globe"
+            ]
+        ]
+    },
+    {
+        "productName": "Vega G2 Outdoor Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "UV Textured White",
+                "UV Textured Black"
+            ],
+            [
+                "Select Style",
+                "Open Face",
+                "Eyelid Face"
+            ]
+        ]
+    },
+    {
+        "productName": "Nudie Short Exterior Wall Light",
+        "selectOptions": []
+    },
+    {
+        "productName": "Kyklop Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "Rusty"
+            ],
+            [
+                "Select Add Globes",
+                "2 x Soraa 9.5W GU10 Globes - 2700K",
+                "2 x Soraa 9.5W GU10 Globes - 3000K",
+                "Without Globes"
+            ]
+        ]
+    },
+    {
+        "productName": "Park 20W Flood Light",
+        "selectOptions": []
+    },
+    {
+        "productName": "Moonstone Up/Down Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black"
+            ]
+        ]
+    },
+    {
+        "productName": "Kyklop Cone Wall Light",
+        "selectOptions": [
+            [
+                "Select Finish",
+                "Black",
+                "Rusty"
+            ],
+            [
+                "Select Add Globe",
+                "Soraa 9.5W GU10 Globe - 2700K",
+                "Soraa 9.5W GU10 Globe - 3000K",
+                "Without Globe"
+            ]
+        ]
+    }
+]

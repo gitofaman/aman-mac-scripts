@@ -1,0 +1,978 @@
+[
+    {
+        "productName": "Spru Linear Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "900mm",
+                "1200mm",
+                "1500mm",
+                "1800mm"
+            ],
+            [
+                "Select Timber Species",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "American Oak"
+            ],
+            [
+                "Select Rod & Bracket",
+                "Brass",
+                "Black Powdercoat",
+                "White Powdercoat"
+            ]
+        ]
+    },
+    {
+        "productName": "Nono 23.5 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "White"
+            ],
+            [
+                "Select Add globe",
+                "Without Globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Strap Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "White"
+            ],
+            [
+                "Select Size",
+                "Strap 16",
+                "Strap 27",
+                "Strap 36",
+                "Strap 48"
+            ],
+            [
+                "Select Add Globe",
+                "Without globe",
+                "Soraa 9.5W GU10 Globe - 2700K",
+                "Soraa 9.5W GU10 Globe - 3000K"
+            ]
+        ]
+    },
+    {
+        "productName": "Artist 40 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "Grey",
+                "Beige",
+                "Copper"
+            ]
+        ]
+    },
+    {
+        "productName": "Artist 25 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "Beige",
+                "Copper",
+                "Grey"
+            ]
+        ]
+    },
+    {
+        "productName": "Tempo Pendant with Shade",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Large"
+            ],
+            [
+                "Select Colour",
+                "Graphite",
+                "Off-white",
+                "Green",
+                "Terra Red"
+            ]
+        ]
+    },
+    {
+        "productName": "Art Modular 5 Suspended Light",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Brushed Copper",
+                "Brushed Gold",
+                "Textured Black",
+                "Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "RBW Print Pendant",
+        "selectOptions": []
+    },
+    {
+        "productName": "Belly Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Belly 29",
+                "Belly 38",
+                "Belly 46"
+            ],
+            [
+                "Select Add globes",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Wireflow 3D Pendant",
+        "selectOptions": []
+    },
+    {
+        "productName": "Hill 85 Pendant",
+        "selectOptions": [
+            [
+                "Select Add Globes",
+                "3 x Vintage LED A60 Porcelain 8W E27 2700K",
+                "3 x Vintage LED A60 Porcelain 8W E27 3000K",
+                "Without Globes"
+            ]
+        ]
+    },
+    {
+        "productName": "Dicte 53 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish",
+                "White",
+                "Beige"
+            ],
+            [
+                "Select Add Globes",
+                "Vintage LED A60 Porcelain 8W E27 3000K",
+                "Vintage LED A60 6W E27 Porcelain 2700K",
+                "Wihtout Globes"
+            ]
+        ]
+    },
+    {
+        "productName": "Nori 18 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Opal Glass",
+                "Smoked Glass",
+                "White",
+                "Black"
+            ],
+            [
+                "Select Add globes",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "North Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Medium",
+                "Large"
+            ],
+            [
+                "Select Colour",
+                "Black",
+                "White",
+                "Beige",
+                "Blue"
+            ]
+        ]
+    },
+    {
+        "productName": "Freya Pendant",
+        "selectOptions": [
+            [
+                "Select Finish",
+                "Dusty Green",
+                "Beige",
+                "Black"
+            ],
+            [
+                "Select Add Globes",
+                "Liquid LED GLS 8W Clear 2700K E27",
+                "Liquid LED Glas 8W Clear 3000K E27",
+                "No Globe"
+            ]
+        ]
+    },
+    {
+        "productName": "Nono 49 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "White"
+            ],
+            [
+                "Select Add globe",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Talli Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "900mm",
+                "1200mm",
+                "1500mm",
+                "1800mm",
+                "2000mm",
+                "2200mm"
+            ],
+            [
+                "Select Timber Species",
+                "Tasmanian Blackwood",
+                "American Oak",
+                "Victorian Ash"
+            ],
+            [
+                "Select Rod Colour",
+                "Please refer to specification sheet"
+            ]
+        ]
+    },
+    {
+        "productName": "Orb Max Pendant Lights",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black"
+            ],
+            [
+                "Select Size",
+                "Large ø30cm",
+                "Max ø40cm"
+            ]
+        ]
+    },
+    {
+        "productName": "Arc Pendant",
+        "selectOptions": [
+            [
+                "Select Length (mm)",
+                "900mm",
+                "1200mm",
+                "1500mm",
+                "1800mm",
+                "2000mm",
+                "2200mm",
+                "2500mm",
+                "2800mm",
+                "3000mm"
+            ],
+            [
+                "Select Timber Species",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "American Oak"
+            ]
+        ]
+    },
+    {
+        "productName": "Coral Duo Pendant",
+        "selectOptions": [
+            [
+                "Select Suspension Rod",
+                "Brass Finish",
+                "Matte Black",
+                "Matte White",
+                "Medium Bronze",
+                "Steel Finish"
+            ],
+            [
+                "Select Size",
+                "Small - 120-140mm",
+                "Medium - 150-170mm",
+                "Large - 200-220mm"
+            ],
+            [
+                "Select Glass",
+                "Clear",
+                "Frosted"
+            ]
+        ]
+    },
+    {
+        "productName": "Vitis 5 Chandelier",
+        "selectOptions": [
+            [
+                "Select Shade Colour",
+                "Frosted Ivory",
+                "Smoked"
+            ],
+            [
+                "Select Cord Colour",
+                "White",
+                "Black"
+            ],
+            [
+                "Select Clasp Colour",
+                "Natural Anodised",
+                "White Gold Anodised",
+                "Black Anodised"
+            ]
+        ]
+    },
+    {
+        "productName": "Mei Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Mei 60",
+                "Mei 90"
+            ],
+            [
+                "Select Colour",
+                "Cream",
+                "White"
+            ]
+        ]
+    },
+    {
+        "productName": "Tenn Linear Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "900mm",
+                "1500mm",
+                "2000mm",
+                "2500mm",
+                "3000mm",
+                "See Specification for all size options"
+            ],
+            [
+                "Select Timber Species",
+                "Montery Pine",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "American Oak",
+                "American Oak - Black Finish",
+                "Walnut"
+            ],
+            [
+                "Select Gripper & Cable Colour",
+                "See Specification Sheet"
+            ]
+        ]
+    },
+    {
+        "productName": "Aver Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Aver 30",
+                "Aver 40",
+                "Aver 50"
+            ],
+            [
+                "Select Add globes",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Occhio Luna Sospeso Pendant",
+        "selectOptions": [
+            [
+                "Select Finish",
+                "Dark Chrome",
+                "Phantom"
+            ],
+            [
+                "Select Size",
+                "Small",
+                "Medium",
+                "Large"
+            ]
+        ]
+    },
+    {
+        "productName": "Tenn Up Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "900mm",
+                "1500mm",
+                "2000mm",
+                "See specification for all available lengths"
+            ],
+            [
+                "Select Cap Colour",
+                "Black",
+                "White"
+            ],
+            [
+                "Select Timber Species",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "American Oak",
+                "Black Finish"
+            ]
+        ]
+    },
+    {
+        "productName": "Coral Dome",
+        "selectOptions": [
+            [
+                "Select Dome",
+                "Matte White",
+                "Matte Black",
+                "Medium Bronze"
+            ],
+            [
+                "Select Colour Temperature",
+                "2700K",
+                "3000K"
+            ]
+        ]
+    },
+    {
+        "productName": "Nori 27 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Opal Glass",
+                "Smoked Glass",
+                "White",
+                "Black"
+            ],
+            [
+                "Select Add globe",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Wind Outdoor Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Medium",
+                "Large"
+            ],
+            [
+                "Select Colour",
+                "Beige",
+                "Green",
+                "Ochre Red"
+            ]
+        ]
+    },
+    {
+        "productName": "Hill 55 Pendant",
+        "selectOptions": [
+            [
+                "Select Add Globes",
+                "3 x Vintage LED G45 3W E14 Porcelain 2700K",
+                "3 x Vintage LED G45 3W E14 Porcelain 3000K",
+                "Without Globes"
+            ]
+        ]
+    },
+    {
+        "productName": "Titanium 13W Pendant Light",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black",
+                "Textured Black/Gold",
+                "Textured Black/White",
+                "Textured White/Gold",
+                "Textured White/Black"
+            ],
+            [
+                "Select Size",
+                "11W 130mm",
+                "11W 200mm",
+                "13W 130mm",
+                "13W 215mm"
+            ]
+        ]
+    },
+    {
+        "productName": "Occhio Mito Volo Pendant",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Black Phantom",
+                "Bronze",
+                "Matt Black",
+                "Matt Gold",
+                "Matt Silver",
+                "Phantom",
+                "Rose Gold",
+                "White"
+            ],
+            [
+                "Select Size",
+                "Small",
+                "Large"
+            ]
+        ]
+    },
+    {
+        "productName": "Tempo Pendant - Classic Globe",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Large"
+            ],
+            [
+                "Select Colour",
+                "Graphite",
+                "Off-white",
+                "Green",
+                "Terra Red"
+            ]
+        ]
+    },
+    {
+        "productName": "FX 48V Indirect Suspended Track",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured Black",
+                "Textured White"
+            ],
+            [
+                "Select Model",
+                "With D02 Darklight I NO UPLIGHT",
+                "With D03 Darklight I NO UPLIGHT",
+                "With D02 Darklight & Eclipse EC10 Uplight",
+                "With D03 Darklight & Eclipse EC10 Uplight"
+            ]
+        ]
+    },
+    {
+        "productName": "Flamingo Pendant",
+        "selectOptions": [
+            [
+                "Select Model",
+                "1570",
+                "1560",
+                "1550",
+                "1540",
+                "1530",
+                "1527",
+                "1515",
+                "1510"
+            ],
+            [
+                "Select Finish",
+                "Gold",
+                "Graphite",
+                "Copper",
+                "White"
+            ]
+        ]
+    },
+    {
+        "productName": "Cardine Pendant",
+        "selectOptions": [
+            [
+                "Select Add Globes",
+                "Vintage LED A60 Porcelain 8W E27 3000K",
+                "Vintage LED A60 Porcelain 8W E27 2700K",
+                "Without Globes"
+            ],
+            [
+                "Select Size",
+                "Cardine 35",
+                "Cardine 50"
+            ]
+        ]
+    },
+    {
+        "productName": "Occhio Mito Sospeso Pendant",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Black Phantom",
+                "Bronze",
+                "Matt Black",
+                "Matt Gold",
+                "Matt Silver",
+                "Matt White",
+                "Phantom",
+                "Rose Gold"
+            ],
+            [
+                "Select Size",
+                "Small",
+                "Large"
+            ]
+        ]
+    },
+    {
+        "productName": "Sibling Pendant",
+        "selectOptions": [
+            [
+                "Select Timber Species",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "White Oak",
+                "Rosewood"
+            ],
+            [
+                "Select Cone Finish",
+                "Dulux Territory Red",
+                "Custom Powdercoat"
+            ]
+        ]
+    },
+    {
+        "productName": "Orb Air Pendant Light",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Medium",
+                "Large"
+            ],
+            [
+                "Select Finish",
+                "Clear",
+                "Frosted"
+            ]
+        ]
+    },
+    {
+        "productName": "Angle Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Black",
+                "Grey",
+                "White"
+            ],
+            [
+                "Select Add globes",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Dicte 40 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish",
+                "White",
+                "Beige"
+            ],
+            [
+                "Select Add Globes",
+                "Vintage LED A60 Porcelain 8W E27 3000K",
+                "Vintage LED A60 Porcelain 8W E27 2700K",
+                "Without Globes"
+            ]
+        ]
+    },
+    {
+        "productName": "Nori 39 Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "White",
+                "Black"
+            ],
+            [
+                "Select Add globe",
+                "Without globe",
+                "E27 Globe - Liquid LED 8W 2700K"
+            ]
+        ]
+    },
+    {
+        "productName": "Wireflow Lineal Pendant",
+        "selectOptions": []
+    },
+    {
+        "productName": "Organic Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Medium",
+                "Large"
+            ],
+            [
+                "Select Suspension Colour",
+                "Old Brass",
+                "Iron"
+            ],
+            [
+                "Select Shade Colour",
+                "Clear Glass",
+                "White"
+            ]
+        ]
+    },
+    {
+        "productName": "Knit Pendant",
+        "selectOptions": [
+            [
+                "Select Model",
+                "Knit 7450",
+                "Knit 7455",
+                "Knit 7460",
+                "Knit 7475",
+                "Knit 7470"
+            ]
+        ]
+    },
+    {
+        "productName": "Coral Duo Dome",
+        "selectOptions": [
+            [
+                "Select Dome",
+                "Matte White",
+                "Matte Black",
+                "Medium Bronze"
+            ],
+            [
+                "Select Colour Temperature",
+                "2700K",
+                "3000K"
+            ]
+        ]
+    },
+    {
+        "productName": "Fluted Roller Pendant",
+        "selectOptions": [
+            [
+                "Select Length",
+                "900mm",
+                "1200mm",
+                "1500mm",
+                "1800mm",
+                "2000mm",
+                "2200mm"
+            ],
+            [
+                "Select Timber Species",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "American Oak"
+            ]
+        ]
+    },
+    {
+        "productName": "Art Modular 4 Suspended Light",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Brushed Copper",
+                "Brushed Gold",
+                "Textured Black",
+                "Textured White"
+            ]
+        ]
+    },
+    {
+        "productName": "Jefferson Pendant",
+        "selectOptions": [
+            [
+                "Select Model",
+                "Jefferson Mini",
+                "Jefferson Small",
+                "Jefferson Medium"
+            ],
+            [
+                "Select Finish Colour",
+                "Black Chrome",
+                "Gold"
+            ]
+        ]
+    },
+    {
+        "productName": "Umber Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "900mm",
+                "1200mm",
+                "1500mm",
+                "2000mm",
+                "2500mm",
+                "3000mm",
+                "See specification for all avialable sizes"
+            ],
+            [
+                "Select Timber Species",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "American Oak",
+                "Walnut",
+                "Black Finish",
+                "White Finish"
+            ],
+            [
+                "Select Rod Finish",
+                "See specification for available rod finishes"
+            ]
+        ]
+    },
+    {
+        "productName": "Titanium Starlight Pendant",
+        "selectOptions": [
+            [
+                "Select Finish Colour",
+                "Textured White",
+                "Textured Black",
+                "Textured White/Black",
+                "Textured White/Gold",
+                "Textured Black/White",
+                "TexturedBlack/Gold"
+            ],
+            [
+                "Select Length",
+                "260mm",
+                "400mm",
+                "600mm",
+                "800mm"
+            ]
+        ]
+    },
+    {
+        "productName": "Tempo Pendant - Opaline Angular",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Large"
+            ],
+            [
+                "Select Colour",
+                "Graphite",
+                "Off-white",
+                "Green",
+                "Terra Red"
+            ]
+        ]
+    },
+    {
+        "productName": "Roller Pendant",
+        "selectOptions": [
+            [
+                "Select Length (mm)",
+                "1200mm",
+                "1500mm",
+                "1800mm",
+                "2000mm",
+                "2200mm",
+                "2500mm",
+                "2800mm",
+                "3000mm"
+            ],
+            [
+                "Select Timber Species",
+                "Victorian Ash",
+                "Spotted Gum",
+                "Tasmanian Blackwood",
+                "American Oak",
+                "American Oak - White Finish",
+                "American Oak - Black Finish"
+            ]
+        ]
+    },
+    {
+        "productName": "Dama Pendant",
+        "selectOptions": [
+            [
+                "Select Finish",
+                "11 Black",
+                "25 Beige D1"
+            ]
+        ]
+    },
+    {
+        "productName": "Array Pendant",
+        "selectOptions": [
+            [
+                "Select Model",
+                "1810",
+                "1815",
+                "1865"
+            ],
+            [
+                "Select Colour",
+                "Beige",
+                "Terra Red",
+                "Green"
+            ]
+        ]
+    },
+    {
+        "productName": "Flat Pendant",
+        "selectOptions": [
+            [
+                "Select Size",
+                "Small",
+                "Large"
+            ],
+            [
+                "Select Colour",
+                "Off-white",
+                "Green",
+                "Terra Red"
+            ]
+        ]
+    },
+    {
+        "productName": "Skan Pendant",
+        "selectOptions": [
+            [
+                "Select Colour",
+                "Terra Red",
+                "Blue",
+                "Black",
+                "Beige",
+                "Green",
+                "White"
+            ],
+            [
+                "Select Size",
+                "Large",
+                "Small"
+            ]
+        ]
+    }
+]

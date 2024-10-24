@@ -1,0 +1,236 @@
+<script>
+    //autocomplete address
+    var addressInput = document.querySelector('[autocomplete]');
+    
+    function updateAddressFromURL() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var locationValue = urlParams.get('location');
+    
+      if (locationValue) {
+        addressInput.value = locationValue;
+        document.querySelector('[deliver-door]').click();
+      }
+    }
+    
+    updateAddressFromURL();
+    
+    </script>
+    <script>
+    document.querySelector('[postcode]').setAttribute('disabled', 'true')
+    
+    var makeInputInvalid = (input, message) => {
+        if(!input.classList.contains('invalid')) {
+            input.classList.add('invalid')
+            var invalidText = document.createElement('div')
+            invalidText.classList.add("invalid-text")
+            invalidText.innerText = message
+            input.parentElement.appendChild(invalidText)
+        }
+    }
+    
+    var makeInputValid = (input) => {
+        input.classList.remove('invalid')
+        var invalidText = input.parentElement.querySelector(`.invalid-text`)
+        if(!!invalidText) {
+            invalidText.remove()
+        }
+    }
+    
+    var updateAddress = (lat, long, city, state, country, zipcode) => {
+        var updateInputValue = (attr, val) => {
+            document.querySelectorAll(`[${attr}]`).forEach(input=>{
+                input.value = val;
+                input.setAttribute('disabled', 'true')
+            })
+        }
+        var isAddressServiceable = postcodeZones.some(item=>item.code === parseInt(zipcode) && item.zone > 0);
+        updateInputValue('lat', lat)
+        updateInputValue('long', long)
+        updateInputValue('city', city)
+        updateInputValue('state', state)
+        updateInputValue('country', country)
+        updateInputValue('postcode', zipcode)
+        areaServiceAble(isAddressServiceable)
+    }
+    
+    var googleDefined = setInterval(() => {
+        if (!!google) {
+            clearInterval(googleDefined)
+    
+            function initMap(address) {
+                var latitude, longitude;
+                var geocoder = new google.maps.Geocoder();
+                var initiateMap = () => {
+                    // Specify the coordinates or address you want to display
+                    var location = {
+                        lat: latitude,
+                        lng: longitude
+                    }; // San Francisco, CA
+    
+                    // Create a new map instance
+                    var map = new google.maps.Map(document.querySelector('[contains-map]'), {
+                        center: location,
+                        zoom: 12
+                    });
+    
+                    // Add a marker to the specified location
+                    var marker = new google.maps.marker.AdvancedMarkerElement({
+                        position: location,
+                        map: map,
+                        title: 'Selected Location'
+                    });
+                }
+                function getComponent(result, componentType) {
+                    const component = result.address_components.find((component) =>
+                      component.types.includes(componentType)
+                    );
+                    return component ? component.long_name : null;
+                  }
+                geocoder.geocode({
+                    address: address
+                }, function (results, status) {
+                    if (status === 'OK') {
+                        var location = results[0].geometry.location;
+                        latitude = location.lat();
+                        longitude = location.lng();
+                        const city = getComponent(results[0], 'locality');
+                        const state = getComponent(results[0], 'administrative_area_level_1');
+                        const country = getComponent(results[0], 'country');
+                        const zipCode = getComponent(results[0], 'postal_code');
+                        
+                        console.log('Latitude:', latitude);
+                        console.log('Longitude:', longitude);
+                        console.log('City:', city);
+                        console.log('State:', state);
+                        console.log('Country:', country);
+                        console.log('Zip Code:', zipCode);
+                        updateAddress(latitude, longitude, city, state, country, zipCode)
+                        initiateMap()
+                    } else {
+                        latitude = -33.8688197;
+                        longitude = 151.2092955;
+                        initiateMap()
+                    }
+                });
+            }
+            $(document).ready(() => {
+                console.log('ready')
+                addressInput.addEventListener('focusout', (e) => {
+                    console.log(e.target.value)
+                    initMap(e.target.value)
+                })
+                initMap(addressInput.value);
+            })
+        }
+    }, 300)
+    </script>
+    <script>
+    //postcodes deactivation script
+    var addressForm = document.querySelector('.deliver-to-door')
+    
+    var deactivateBtn = () => {
+        addressForm.querySelectorAll('[next-step-btn]').forEach(btn=>{
+            btn.classList.add('pointer-events-off')
+            btn.style.opacity = '0.5'
+        })
+    }
+    
+    var activateBtn = () => {
+        addressForm.querySelectorAll('[next-step-btn]').forEach(btn=>{
+            btn.classList.remove('pointer-events-off')
+            btn.style.opacity = ''
+        })
+    }
+    
+    var areaServiceAble = (isAddressServiceable) => {
+        var addressInput = document.querySelector('[postcode]');
+        if(isAddressServiceable) {
+            makeInputValid(addressInput)
+            addressForm.querySelector('[self-link]').style.display = 'none'
+            activateBtn()
+        } else {
+            deactivateBtn()
+            makeInputInvalid(addressInput, 'Sorry, the address you have entered is not serviceable')
+            addressForm.querySelector('[self-link]').style.display = 'block'
+        }
+    }
+    
+    deactivateBtn();
+    
+    var postCodeInput = document.querySelector('[postcode]')
+    postCodeInput.addEventListener('keyup', e=>{
+        var val = e.target.value
+    
+        if(val.length >= 4) {
+            var isAddressServiceable = postcodeZones.some(item=>item.code === parseInt(val) && item.zone > 0);
+            console.log(isAddressServiceable)
+            areaServiceAble(isAddressServiceable)
+        } else {
+            deactivateBtn()
+        } 
+    })
+    </script>
+    <script>
+    //to open popup on email quote button click
+    //to open popup on email quote button click
+    var emailQuoteBtns = document.querySelectorAll('[email-quote]')
+    emailQuoteBtns.forEach(emailQuoteBtn =>{
+        var correspondingQuoteForm = document.querySelector(`[${emailQuoteBtn.getAttribute('email-quote')}]`)
+        emailQuoteBtn.addEventListener('click', ()=>{
+            correspondingQuoteForm.parentElement.classList.add('show-flex')
+            setTimeout(()=>{
+                correspondingQuoteForm.querySelector('input[type="submit"]').click()
+            }, 3000)
+        })
+    })
+    
+    var quoteForms = document.querySelectorAll('.blank-form')
+    quoteForms.forEach(quoteForm => {
+        quoteForm.querySelector('.close-blank').addEventListener('click', ()=>{
+            quoteForm.classList.remove('show-flex')
+        })
+    })
+    </script>
+    <script>
+    // to handle steps and inputs based on which form was expected to be opened
+    var deliverDoorClicked = false;
+    var movingAssistanceClicked = false;
+    
+    //initially all forms should be closed
+    $('[form-index]').css('display', 'none')
+    
+    //open form on click
+    $('[open-form]').on('click', function(){
+        var $main = $(this)
+    $('[form-index]').css('display', 'none')
+        var formToOpen = $(`[form-index=${$main.attr('open-form')}]`)
+        formToOpen.css('display', 'block')
+        $('.section-form-action').hide()
+    
+        // if clicked on deliver to door option
+        if(!!$(this).attr('deliver-door') && !deliverDoorClicked) {
+            deliverDoorClicked = true;
+            console.log("Deliver to door : Clicked")
+            // store options - hide 6 months +
+            $('[store-option]').show()
+            $('[store-option="6m"]').hide()
+            //remove every moving assistance related steps
+            $('[delivery-type="ma"]').remove()
+        }
+    
+        // if clicked on moving assistance option
+        if(!!$(this).attr('moving-assistance') && !movingAssistanceClicked) {
+            movingAssistanceClicked = true;
+            //store options - hide 3 months +
+            $('[store-option]').show()
+            $('[store-option="3m"]').hide()
+            //remove every deliver to door related steps
+            $('[delivery-type="door"]').remove()
+        }
+    
+    
+        // once necessary changes to forms are done, initiate the form
+        formStepInitiate()
+    })
+    </script>
+    <script src='https://uploads-ssl.webflow.com/645da68b13f6d18c7e890be2/669d6eb39b9fd2e28ffa76c0_prices-copy.txt'></script>

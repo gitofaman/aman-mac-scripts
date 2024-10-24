@@ -1,0 +1,88 @@
+/* for keeping image proportions */
+@media screen and (min-width: 768px) {
+    .case-study:nth-child(8n+1) .is-mw-1img {
+        aspect-ratio: 976/418;
+    }
+    
+    .case-study:nth-child(8n+2) .is-mw-1img {
+        aspect-ratio: 549/647;
+    }
+    
+    .case-study:nth-child(8n+3) .is-mw-1img {
+        aspect-ratio: 692/418;
+    }
+    
+    .case-study:nth-child(8n+4) .is-mw-1img {
+        aspect-ratio: 692/548;
+    }
+    
+    .case-study:nth-child(8n+5) .is-mw-1img {
+        aspect-ratio: 692/548;
+    }
+    
+    .case-study:nth-child(8n+6) .is-mw-1img {
+        aspect-ratio: 692/418;
+    }
+    
+    .case-study:nth-child(8n+7) .is-mw-1img {
+        aspect-ratio: 549/647;
+    }
+    
+    .case-study:nth-child(8n+8) .is-mw-1img {
+        aspect-ratio: 976/418;
+    }
+}
+
+.case-study:nth-child(8n+1) {
+    width: 60%;
+    height: 33em; /* Increased by 10% */
+    padding-right: 4em;
+    padding-bottom: 3em;
+}
+
+.case-study:nth-child(8n+2) {
+    width: 40%;
+    height: 44em; /* Increased by 10% */
+    padding-left: 4em;
+}
+
+.case-study:nth-child(8n+3) {
+    padding-right: 4em;
+    padding-left: 5.8em; /* Decreased by 20% from 7.25em */
+    width: 50%;
+    height: 29.7em; /* Increased by 10% */
+    margin-top: -11em; /* Adjusted accordingly */
+}
+
+.case-study:nth-child(8n+4) {
+    padding-left: 4em;
+    width: 50%;
+    height: 33em; /* Increased by 10% */
+}
+
+.case-study:nth-child(8n+5) {
+    width: 50%;
+    height: 33em; /* Increased by 10% */
+    margin-top: -15.4em; /* Adjusted accordingly */
+    padding-right: 4em;
+}
+
+.case-study:nth-child(8n+6) {
+    padding-right: 7.25em;
+    padding-left: 4em;
+    width: 50%;
+    height: 29.7em; /* Increased by 10% */
+}
+
+.case-study:nth-child(8n+7) {
+    padding-right: 4em;
+    width: 40%;
+    height: 44em; /* Increased by 10% */
+    margin-top: -11em; /* Adjusted accordingly */
+}
+
+.case-study:nth-child(8n+8) {
+    padding-left: 4em;
+    width: 60%;
+    height: 33em; /* Increased by 10% */
+}

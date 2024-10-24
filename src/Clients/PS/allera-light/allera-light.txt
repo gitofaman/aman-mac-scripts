@@ -1,0 +1,16 @@
+Create a jquery code which creates a block
+
+<div class="applied-block">
+    <div>[FILTER-NAME]</div>
+    <div class="applied-checks">
+        <div class="applied-filter-main">[CHECKBOX 1 LABEL]</div>
+        <div class="applied-filter-main">[CHECKBOX 2 LABEL]</div>
+    </div>
+</div>
+
+for every block with class custom-multi-select (let's say block "Main"). Here are specific pointers for it 
+1. It should get appended in the block with class "applied-filters"
+2. [FILTER-NAME] will come from the attribute "filter-name" from block Main
+3. block Main consists of checkboxes and we're expected to track changes in it, for every checkbox that is selected they should appear as [CHECKBOX LABEL] in the applied-checks block. Checkbox Label obviously should contain checkbox label of selected checkbox. (the input type checkbox has a sibling with class w-form-label which contains the text value we're thinking of as label)
+4. If no checkbox is selected, it should be removed from "applied-checks" block and corresponding"applied-block" should hide. 
+5. Clicking on "applied-filter-main" should uncheck the corresponding checkbox (that was inside block Main) and obviously remove the applied-filter-main

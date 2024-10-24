@@ -1,0 +1,79 @@
+[{
+    "id": "mem_cly2wo64e03d90smxg48x6hov",
+    "auth": {
+        "email": "roshidean30@gmail.com"
+    },
+    "createdAt": "2024-07-01T11:37:33.184Z",
+    "metaData": {},
+    "customFields": {
+        "name": "Roshi Dean",
+        "winner": "3",
+        "over-18": "true",
+        "last-name": "Dean",
+        "member-no": "1",
+        "first-name": "Roshi"
+    },
+    "permissions": [],
+    "loginRedirect": null,
+    "verified": true,
+    "lastLogin": "2024-07-01T11:40:19.294Z",
+    "profileImage": "https://lh3.googleusercontent.com/a/ACg8ocI4MzLm4kE1fgqD4RVTpAv14C90G3iWEQ8sPQhUP2dGmhuzQTab=s96-c",
+    "planConnections": [{
+        "id": "con_cly2wyp7w0r8u0srb477m6vkg",
+        "active": true,
+        "status": "ACTIVE",
+        "planId": "pln_hall-of-fame-bdq0woe",
+        "planName": "Hall of Fame",
+        "type": "SUBSCRIPTION",
+        "payment": {
+            "stripeSubscriptionId": "sub_1PXifq06SLgSiMSipt4GJsat",
+            "amount": 39.95,
+            "currency": "aud",
+            "status": "PAID",
+            "lastBillingDate": 1719834335,
+            "nextBillingDate": 1722512734,
+            "cancelAtDate": null,
+            "pauseCollection": null,
+            "pauseResumeAt": null
+        }
+    }]
+}, {
+    "id": "mem_cly85cmtr0ye10ss36odsdvi1",
+    "auth": {
+        "email": "joshygcollects@hotmail.com"
+    },
+    "createdAt": "2024-07-05T03:39:22.385Z",
+    "metaData": {},
+    "customFields": {
+        "winner": "5",
+        "over-18": "true",
+        "member-no": "2",
+        "first-name": "Josh ",
+        "favourite-team": "Lakers",
+        "favourite-sport": "Basketball"
+    },
+    "permissions": [],
+    "loginRedirect": null,
+    "verified": false,
+    "lastLogin": "2024-07-15T19:29:30.744Z",
+    "profileImage": null,
+    "planConnections": [{
+        "id": "con_cly85e4yx0ye40ss30o7k0gwl",
+        "active": true,
+        "status": "ACTIVE",
+        "planId": "pln_hall-of-fame-bdq0woe",
+        "planName": "Hall of Fame",
+        "type": "SUBSCRIPTION",
+        "payment": {
+            "stripeSubscriptionId": "sub_1PZ30V06SLgSiMSi4wcGMVFE",
+            "amount": 39.95,
+            "currency": "aud",
+            "status": "PAID",
+            "lastBillingDate": 1720150824,
+            "nextBillingDate": 1722829223,
+            "cancelAtDate": null,
+            "pauseCollection": null,
+            "pauseResumeAt": null
+        }
+    }]
+}]
