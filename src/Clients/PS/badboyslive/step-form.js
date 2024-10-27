@@ -6,7 +6,7 @@ function validateInput($el) {
 
     // Helper functions for validation
     const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const isValidPhone = (phone) => /^\d{10}$/.test(phone); // Simplified example for 10-digit numbers
+    const isValidPhone = (phone) => !isNaN(phone); // Simplified example for 10-digit numbers
     const isValidNumber = (num) => !isNaN(num); // Check if it's a valid number
 
     if (inputType === 'text' || inputName === 'text') {
@@ -133,46 +133,52 @@ var reqAttr = 'required-block'
 var stepValidation = (i) => {
     var stepCorrect = true;
 
-    var toValidateStep = $('.book-step').eq(i)
+    var toValidateStep = $('.book-step').eq(i);
 
-    if  (!!toValidateStep.attr('ignore')) {
+    if (!!toValidateStep.attr('ignore')) {
         return true;
     }
 
-    var requiredBlocks = toValidateStep.find(`[${reqAttr}]`)
-    requiredBlocks.each(function(){
-        var mainBlock = $(this)
-        if(mainBlock.is(':visible')) {
-            var reqType = $(this).attr(reqAttr)
+    var requiredBlocks = toValidateStep.find(`[${reqAttr}]`);
+    requiredBlocks.each(function() {
+        var mainBlock = $(this);
+        if (mainBlock.is(':visible')) {
+            var reqType = $(this).attr(reqAttr);
             switch (reqType) {
                 case "input":
-                    var currInputValidation = validateInput(mainBlock.find('input, textarea, select').eq(0)) 
-                    if(currInputValidation[0] === false ) {
-                        stepCorrect = false
-                        alertRequired(mainBlock, currInputValidation[1])
+                    var currInputValidation = validateInput(mainBlock.find('input, textarea, select').eq(0));
+                    if (currInputValidation[0] === false) {
+                        stepCorrect = false;
+                        alertRequired(mainBlock, currInputValidation[1]);
                     }
                     break;
                 case "checkbox":
-                    var checkboxes = $(this).find('.form_crbox-icon.is-checked, .package-radio.is-checked')
-                    if(checkboxes.length === 0) {
-                        stepCorrect = false
-                        alertRequired(mainBlock, "Please select at least one")
+                    var checkboxes = $(this).find('.form_crbox-icon.is-checked, .package-radio.is-checked');
+                    if (checkboxes.length === 0) {
+                        stepCorrect = false;
+                        alertRequired(mainBlock, "Please select at least one");
                     }
                     break;
                 default:
                     break;
             }
         }
+    });
 
-    })
-    if(!stepCorrect) {
+    if (!stepCorrect) {
         gsap.to(window, {
             scrollTo: toValidateStep.offset().top - 100,
             duration: 0.5
-        })
+        });
+    } else {
+        // Trigger the custom 'validated' event if the step is valid
+        console.log("TRIGGERING THE VALIDATE STEP")
+        toValidateStep.trigger('validated');
     }
-    return stepCorrect
-}
+
+    return stepCorrect;
+};
+
 
 $(document).ready(function () {
     $('.book-step').hide()
@@ -198,7 +204,7 @@ $(document).ready(function () {
     }
 
     $("[step-to]").on('click', function () {
-        showValues('.form_book-now')
+        showValues('.form_book-now', '.book-now-form-ready')
         if ($(this).attr('step-to').toLowerCase() === "next") {
             // whenever we try to go to next step, current will be validated
             if (stepValidation(currStep)) {
@@ -206,22 +212,8 @@ $(document).ready(function () {
             }
         } else if ($(this).attr('step-to').toLowerCase() === "previous") {
             showStep(currStep - 1)
-        } else { // this is submit button
-            if(stepValidation(currStep)) {
-                $('form.book-now-form-ready').submit()
-                gsap.fromTo('.form-submit-loading', {
-                    display: 'flex',
-                    opacity: 0
-                }, {
-                    opacity: 1,
-                    duration: 0.5,
-                    // onComplete: function() {
-                    //     // setTimeout(function() {
-                    //     //     window.location.href(window.location.origin + '/thank-you')
-                    //     // }, 2000)
-                    // }
-                })
-            }
+        } else {
+            stepValidation(currStep) // just validate the step
         }
     })
 
@@ -398,9 +390,8 @@ $('.form_field-wrapper').each(function () {
 
 //TEMPORARY SCRIPT JUST TO EASE DEBUGGING
 // $(".book-step").eq(0).attr('ignore', 'true')
-var startingFormName = $('.book-now-form-ready').attr('saved-name')
-function showValues(el) {
-    // Find all input, select, and textarea within the provided element
+
+function getFormValues (formClass) {
     var values = [];
     $(el).find('input, select, textarea').each(function() {
         var $this = $(this);
@@ -413,8 +404,8 @@ function showValues(el) {
         var elementType = $this.prop('nodeName').toLowerCase();  // Get the type of element (input, select, textarea)
         var label = $this.attr('name');  // Use the name attribute as the label
 
-        if(!!$this.closest('[start-name]')) {
-            label = `${$this.closest('[start-name]')} - ${label}`
+        if($this.closest('[start-name]').length > 0) {
+            label = `${$this.closest('[start-name]').attr('start-name')} - ${label}`
         }
 
         var value = $this.val();  // Get the value of the element
@@ -433,7 +424,7 @@ function showValues(el) {
     });
 
     // Remove any previously added inputs with 'added-inputs' attribute
-    $('.book-now-form-ready').find('[added-inputs]').remove();
+    $(formClass).find('[added-inputs]').remove();
 
     // Loop through the JSON values array and create hidden inputs
     values.forEach(function(item) {
@@ -450,7 +441,7 @@ function showValues(el) {
                     'added-inputs': true  // Add the 'added-inputs' attribute
                 });
                 // Append the input to the .book-now-form-ready element
-                $('.book-now-form-ready').append(input);
+                $(formClass).append(input);
             }
         }
     });
@@ -459,7 +450,77 @@ function showValues(el) {
     var uniqueID = (date.getTime().toString(36)).slice(-6); // Convert timestamp to base 36 and take the last 6 characters
 
     var namedArray = []
-    $('.book-now-form-ready').find('[name]').each(function(){
+    $(formClass).find('[name]').each(function(){
+        var thisValue = $(this).val()
+        var name = $(this).attr('name')
+        if(name.toLowerCase().indexOf('name') > 0) {
+            namedArray.push(thisValue)
+        }
+    })
+}
+
+function showValues(el, formClass) {
+    var startingFormName = $(formClass).attr('saved-name')
+    // Find all input, select, and textarea within the provided element
+    var values = [];
+    $(el).find('input, select, textarea').each(function() {
+        var $this = $(this);
+
+        // Skip elements that are inside a block with the 'is-hidden' attribute
+        if ($this.closest('[is-hidden]').length > 0) {
+            return; // Skip this element and continue to the next one
+        }
+
+        var elementType = $this.prop('nodeName').toLowerCase();  // Get the type of element (input, select, textarea)
+        var label = $this.attr('name');  // Use the name attribute as the label
+
+        if($this.closest('[start-name]').length > 0) {
+            label = `${$this.closest('[start-name]').attr('start-name')} - ${label}`
+        }
+
+        var value = $this.val();  // Get the value of the element
+
+        // Handle cases where the element doesn't have a name attribute
+        if (!label) {
+            label = elementType;  // Use the element type if name is not available
+        }
+
+        if(value.length > 0) {
+            // Log the value in the desired format
+            var currValue = {};
+            currValue[label] = value;
+            values.push(currValue);
+        }
+    });
+
+    // Remove any previously added inputs with 'added-inputs' attribute
+    $(formClass).find('[added-inputs]').remove();
+
+    // Loop through the JSON values array and create hidden inputs
+    values.forEach(function(item) {
+        for (var key in item) {
+            if (item.hasOwnProperty(key)) {
+                var value = item[key];
+
+                // Create a new input element
+                var input = $('<input>').attr({
+                    class: 'form_input',
+                    type: 'text',
+                    name: key,
+                    value: value,
+                    'added-inputs': true  // Add the 'added-inputs' attribute
+                });
+                // Append the input to the .book-now-form-ready element
+                $(formClass).append(input);
+            }
+        }
+    });
+    
+    var date = new Date();
+    var uniqueID = (date.getTime().toString(36)).slice(-6); // Convert timestamp to base 36 and take the last 6 characters
+
+    var namedArray = []
+    $(formClass).find('[name]').each(function(){
         var thisValue = $(this).val()
         var name = $(this).attr('name')
         if(name.toLowerCase().indexOf('name') > 0) {
@@ -467,10 +528,10 @@ function showValues(el) {
         }
     })
 
-    var uniqueName = startingFormName + ' - ' + namedArray.join(' ') + uniqueID
+    var uniqueName = startingFormName + ' - ' + namedArray.join(' ') + " #" + uniqueID.toUpperCase()
 
     if(namedArray.length > 0) {
-        $('.book-now-form-ready').attr({
+        $(formClass).attr({
             'name' : uniqueName,
             'data-name': uniqueName,
             'aria-label': uniqueName
@@ -478,3 +539,29 @@ function showValues(el) {
     }
 
 }
+
+// this is to submit the first step once validated
+$(document).ready(function() {
+    var firstStepFormClass = '.first-step-form'
+
+    $('.book-step:last-child').on('validated', function() { // when final step is validated, submit the form
+        var additionalTl = gsap.timeline()
+        additionalTl.fromTo('.form-submit-loading', {
+            display: 'flex',
+            opacity: 0
+        }, {
+            opacity: 1,
+            duration: 0.5,
+            onComplete: function() {
+                gsap.fromTo('.additional-request', {
+                    display: 'block',
+                    opacity: 0
+                }, {
+                    opacity: 1,
+                    delay: 5
+                })
+            }
+        })
+    })
+
+})

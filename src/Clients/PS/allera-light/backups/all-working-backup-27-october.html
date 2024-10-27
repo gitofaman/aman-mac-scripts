@@ -1,0 +1,476 @@
+<script>
+    var scriptAllowed = true
+</script>
+<script>
+    $(document).ready(function () {
+        var cmsItems = [];
+
+        var loadingScreen = $('.loading-animation')
+        loadingScreen.css('display', 'flex')
+        var filterBrands = [];
+        var filterColors = [];
+        $(document).ready(function () {
+            $('.filter-form').hide()
+
+            // $('.section-nest-color-tags .nest-product-item').each(function() {
+            //     var brandText = $(this).find('.filter-brand-text').text().trim();
+
+            //     if (brandText) {
+            //         filterBrands.push(brandText);
+            //     }
+            //     // if (colorText) {
+            //     //     filterColors.push(colorText);
+            //     // } 
+            // })
+            // var processed = false
+            // var waitForColors = setInterval(function() {
+            //     var colorTagItems = $('.section-nest-color-tags [fs-cmsfilter-field="color"]')
+            //     console.log(colorTagItems.length)
+            //     if(colorTagItems.length > 0) {
+            //         clearInterval(waitForColors)
+            //         colorTagItems.each(function() {
+            //             var thisColor = $(this).text().toLowerCase()
+            //             if(filterColors.includes(thisColor)) {
+            //                 return;
+            //             } else {
+            //                 filterColors.push(thisColor);
+            //             }
+            //         })
+            //         console.log(filterColors)
+            //         processFilters()
+            //     }
+            // }, 200)
+
+            var currentPage = 1;
+            var baseUrl = window.location.pathname;
+
+
+            function fetchPage(page) {
+                var url = page === 1 ? baseUrl : baseUrl + '?90147b29_page=' + page;
+
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    success: function (data) {
+                        var $html = $(data);
+                        var $items = $html.find(
+                            '[fs-cmsfilter-element] .collection-item-12.w-dyn-item');
+                        var $nextPageButton = $html.find('.w-pagination-next');
+
+                        // Add the found items to the cmsItems array
+                        cmsItems = cmsItems.concat($items.toArray());
+
+                        // Collect filter brands and colors
+                        $items.each(function () {
+                            var brandText = $(this).find('.filter-brand-text')
+                            .text().trim();
+                            var colorText = $(this).find('.filter-color-text')
+                            .text().trim();
+
+                            if (brandText) {
+                                filterBrands.push(brandText);
+                            }
+                            if (colorText) {
+                                filterColors.push(colorText);
+                            }
+                        });
+
+                        // Check if there is a next page
+                        if ($nextPageButton.length) {
+                            fetchPage(page + 1);
+                        } else {
+                            // All pages have been fetched
+                            console.log('All items:', cmsItems);
+                            processFilters();
+                            // console.log(filterColors)
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log('Error fetching the page:', textStatus, errorThrown);
+                    }
+                });
+            }
+            var processed = false;
+
+            function processFilters() {
+                // Remove duplicates
+                filterBrands = [...new Set(filterBrands)];
+                filterColors = [...new Set(filterColors)];
+
+                // Process filter-brand-item
+                $('.filter-brand-item').each(function () {
+                    var brandText = $(this).text().trim();
+                    if (filterBrands.includes(brandText)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+
+                // Process filter-finish-color-item
+                $('.filter-finish-color-item').each(function () {
+                    var colorText = $(this).text().trim();
+                    $(this).hide()
+                    filterColors.forEach(color => {
+                        if (color.indexOf(colorText) > 0) {
+                            $(this).show();
+                        }
+                    })
+                });
+                $('.filter-form').show()
+                gsap.to(loadingScreen, {
+                    opacity: 0,
+                    onComplete: function () {
+                        loadingScreen.hide();
+                    }
+                })
+            }
+
+            // Start fetching from the first page
+            fetchPage(currentPage);
+            // processFilters()
+            // console.log(filterColors)
+        });
+    })
+</script>
+<script src="http://localhost:3000/Clients/PS/allera-light/script.js"></script>
+<script>
+    //1st script
+    // this is just for image change on hover
+    var productBlocks = document.querySelectorAll('.fixed-image-container');
+    var transitionTime = 500
+    var imageShowTime = 500
+    var easingType = 'easeOutSine'
+
+    var opaqueTheEl = (el) => {
+        el.style.opacity = 0
+        anime({
+            targets: el,
+            duration: transitionTime,
+            opacity: 1,
+            easing: easingType
+        })
+    }
+
+    var transparentTheEl = (el) => {
+        el.style.opacity = 1
+        anime({
+            targets: el,
+            duration: transitionTime,
+            opacity: 0,
+            easing: easingType
+        })
+    }
+
+    var nextForList = (currentNo, givenList) => {
+        var nextNo, nextEl
+        dataToReturn = {}
+        if (currentNo < givenList.length - 1) {
+            nextNo = currentNo + 1
+            nextEl = givenList[nextNo]
+        } else {
+            nextNo = 0
+            nextEl = givenList[nextNo]
+        }
+        dataToReturn["nextNo"] = nextNo
+        dataToReturn["nextEl"] = nextEl
+        return dataToReturn;
+    }
+
+    productBlocks.forEach(productBlock => {
+        //setting the opacity of all image except the first one as zero
+        var prodImages, currentBlockAutoInterval, currentImageIndex, isPlaying;
+        prodImages = [productBlock.querySelector('.product4_image'), ...productBlock.querySelectorAll(
+            '.product-full-image')]
+        //resets the image to show the first image and sets the current image index to 0
+        var resetOpacity = () => {
+            prodImages.forEach(prodImage => {
+                prodImage.style.opacity = 0
+            })
+            prodImages[0].style.opacity = 1
+            currentImageIndex = 0;
+            isPlaying = false;
+        }
+
+        resetOpacity()
+
+        if (prodImages.length > 1) {
+            //image loop on mouseover
+            productBlock.addEventListener('mouseover', () => {
+                //show currentImage for imageShowTime then disappear the currentImage, showing the nextImage
+                isPlaying = true;
+                var nextImage, currentImage, nextImage;
+
+                function showNextImage() {
+                    if (isPlaying) {
+                        currentImage = prodImages[currentImageIndex]
+                        nextImage = nextForList(currentImageIndex, prodImages).nextEl
+                        setTimeout(() => {
+                            if (isPlaying) {
+                                transparentTheEl(currentImage)
+                                opaqueTheEl(nextImage)
+                            }
+                        }, imageShowTime)
+                        //changing the current image index for next iteration
+                        currentImageIndex = nextForList(currentImageIndex, prodImages).nextNo
+                    }
+                }
+                showNextImage()
+                currentBlockAutoInterval = setInterval(showNextImage, imageShowTime + transitionTime)
+            })
+
+            //stop loop on mouseOut
+            productBlock.addEventListener('mouseout', () => {
+                //isPlaying makes sure to stop the animation to help the reset opacity cause
+                isPlaying = false;
+                clearInterval(currentBlockAutoInterval)
+                //timeout to make sure reset opacity gets triggered after the latest image change
+                setTimeout(resetOpacity, transitionTime)
+            })
+        }
+    })
+</script>
+
+
+
+
+
+
+<script>
+    // this is for dropdown functionality and showing selected filters
+    $(document).ready(function () {
+        function closeDropdown(dropdownEl, duration = 0.5) {
+            var cs = dropdownEl.closest('.custom-multi-select');
+            updateSelected(cs);
+            gsap.to(dropdownEl, {
+                height: 0,
+                duration: duration
+            });
+            cs.data('dropdownOpen', false);
+        }
+
+        function updateSelected(cs) {
+            var selectVal = cs.find('[select-val]');
+            var defaultVal = selectVal.data('default-val');
+            var selectedTotal = cs.find('input[type=checkbox]:checked').length;
+            if (selectedTotal == 0) {
+                selectVal.text(defaultVal);
+            } else {
+                selectVal.text(selectedTotal + " selected");
+            }
+        }
+
+        $('.custom-multi-select').each(function () {
+            var cs = $(this);
+            var selectVal = cs.find('[select-val]');
+            selectVal.data('default-val', selectVal.text());
+            var toggle = cs.find('.cs-toggle');
+            var dropdown = cs.find('.cs-dropdown');
+
+            cs.data('dropdownOpen', false);
+
+            var openDropdown = () => {
+                cs.data('dropdownOpen', true);
+                gsap.to(dropdown, {
+                    height: "auto",
+                });
+            };
+
+            toggle.on('click', function (event) {
+                event.stopPropagation(); // Prevent click from propagating to document
+                if (cs.data('dropdownOpen')) {
+                    closeDropdown(dropdown);
+                } else {
+                    // close any other open dropdowns
+                    $('.custom-multi-select').each(function () {
+                        if ($(this).data('dropdownOpen')) {
+                            closeDropdown($(this).find('.cs-dropdown'), 0.5);
+                        }
+                    });
+                    openDropdown();
+                }
+            });
+
+            cs.find('input').on('change', function () {
+                updateSelected(cs);
+            });
+
+            cs.find('.close-cms-block').on('click', function () {
+                closeDropdown(dropdown, 0.5);
+            });
+
+            closeDropdown(dropdown, 0);
+        });
+
+        // Close dropdowns if clicking outside of custom-multi-select
+        $(document).on('click', function () {
+            $('.custom-multi-select').each(function () {
+                if ($(this).data('dropdownOpen')) {
+                    closeDropdown($(this).find('.cs-dropdown'), 0.5);
+                }
+            });
+        });
+
+        // Prevent closing when clicking inside custom-multi-select
+        $('.custom-multi-select').on('click', function (event) {
+            event.stopPropagation();
+        });
+    });
+
+    $(document).ready(function () {
+        // Function to update the applied filters
+        function updateAppliedFilters() {
+            var anyCheckboxSelected = false;
+
+            // Loop through each custom-multi-select block
+            $('.custom-multi-select').each(function () {
+                var $mainBlock = $(this);
+                var filterName = $mainBlock.attr('filter-name');
+                var $appliedFiltersBlock = $('.applied-filters');
+
+                // Find or create the applied-block for this filter
+                var $appliedBlock = $appliedFiltersBlock.find('.applied-block[data-filter-name="' +
+                    filterName + '"]');
+                if ($appliedBlock.length === 0) {
+                    $appliedBlock = $('<div class="applied-block" data-filter-name="' + filterName +
+                        '"></div>');
+                    $appliedBlock.append('<div>' + filterName + '</div>');
+                    $appliedBlock.append('<div class="applied-checks"></div>');
+                    $appliedFiltersBlock.append($appliedBlock);
+                }
+
+                var $appliedChecks = $appliedBlock.find('.applied-checks');
+                $appliedChecks.empty();
+
+                // Loop through each checkbox in the main block
+                $mainBlock.find('input[type="checkbox"]').each(function () {
+                    var $checkbox = $(this);
+                    var checkboxLabel = $checkbox.siblings('.w-form-label').text();
+
+                    if ($checkbox.is(':checked')) {
+                        // Add the checked checkbox label to the applied-checks block
+                        var $filterMain = $('<div class="applied-filter-main">' +
+                            checkboxLabel + '</div>');
+                        $filterMain.data('checkbox', $checkbox);
+                        $appliedChecks.append($filterMain);
+
+                        // Mark that at least one checkbox is selected
+                        anyCheckboxSelected = true;
+                    }
+                });
+
+                // Show or hide the applied-block based on the number of applied checks
+                if ($appliedChecks.children().length > 0) {
+                    $appliedBlock.show();
+                } else {
+                    $appliedBlock.hide();
+                }
+            });
+
+            // Show or hide the close-cms-block based on the selection of any checkbox
+            if (anyCheckboxSelected) {
+                $('.close-cms-block').show();
+            } else {
+                $('.close-cms-block').hide();
+            }
+        }
+
+        // Update applied filters on page load
+        updateAppliedFilters();
+
+        // Update applied filters on checkbox change
+        $(document).on('change', '.custom-multi-select input[type="checkbox"]', function () {
+            updateAppliedFilters();
+        });
+
+        // Click on checkbox and remove applied-filter-main on click
+        $(document).on('click', '.applied-filter-main', function () {
+            var $filterMain = $(this);
+            var $checkbox = $filterMain.data('checkbox');
+            if ($checkbox) {
+                $checkbox.click(); // Trigger click on the checkbox to uncheck it
+            }
+            $filterMain.remove();
+            updateAppliedFilters();
+        });
+    });
+
+
+    $(document).ready(function () {
+        // Function to update the applied filters
+        function updateAppliedFilters() {
+            var anyCheckboxSelected = false;
+
+            // Loop through each custom-multi-select block
+            $('.custom-multi-select').each(function () {
+                var $mainBlock = $(this);
+                var filterName = $mainBlock.attr('filter-name');
+                var $appliedFiltersBlock = $('.applied-filters');
+
+                // Find or create the applied-block for this filter
+                var $appliedBlock = $appliedFiltersBlock.find('.applied-block[data-filter-name="' +
+                    filterName + '"]');
+                if ($appliedBlock.length === 0) {
+                    $appliedBlock = $('<div class="applied-block" data-filter-name="' + filterName +
+                        '"></div>');
+                    $appliedBlock.append('<div>' + filterName + '</div>');
+                    $appliedBlock.append('<div class="applied-checks"></div>');
+                    $appliedFiltersBlock.append($appliedBlock);
+                }
+
+                var $appliedChecks = $appliedBlock.find('.applied-checks');
+                $appliedChecks.empty();
+
+                // Loop through each checkbox in the main block
+                $mainBlock.find('input[type="checkbox"]').each(function () {
+                    var $checkbox = $(this);
+                    var checkboxLabel = $checkbox.siblings('.w-form-label').text();
+
+                    if ($checkbox.is(':checked')) {
+                        // Add the checked checkbox label to the applied-checks block
+                        var $filterMain = $('<div class="applied-filter-main">' +
+                            checkboxLabel + '</div>');
+                        $filterMain.data('checkbox', $checkbox);
+                        $appliedChecks.append($filterMain);
+
+                        // Mark that at least one checkbox is selected
+                        anyCheckboxSelected = true;
+                    }
+                });
+
+                // Show or hide the applied-block based on the number of applied checks
+                if ($appliedChecks.children().length > 0) {
+                    $appliedBlock.show();
+                } else {
+                    $appliedBlock.hide();
+                }
+            });
+
+            // Show or hide the close-cms-block based on the selection of any checkbox
+            if (anyCheckboxSelected) {
+                $('.close-cms-block').show();
+            } else {
+                $('.close-cms-block').hide();
+            }
+        }
+
+        // Update applied filters on page load
+        updateAppliedFilters();
+
+        // Update applied filters on checkbox change
+        $(document).on('change', '.custom-multi-select input[type="checkbox"]', function () {
+            updateAppliedFilters();
+        });
+
+        // Click on checkbox and remove applied-filter-main on click
+        $(document).on('click', '.applied-filter-main', function () {
+            var $filterMain = $(this);
+            var $checkbox = $filterMain.data('checkbox');
+            if ($checkbox) {
+                $checkbox.click(); // Trigger click on the checkbox to uncheck it
+            }
+            $filterMain.remove();
+            updateAppliedFilters();
+        });
+    });
+</script>
