@@ -1,0 +1,320 @@
+<script>
+$(document).ready(function () {
+    if ($(window).width() < 991) {
+        var navbarOpen = false;
+        var navTl = gsap.timeline({
+            paused: true,
+            onReverseComplete: function() {
+                // Change the color back to the curr-color attribute value after reverse completes
+                $('.is-navinside').css({
+                    color: $('.is-navinside').attr("curr-color")
+                });
+                startScroll();
+            },
+            onStart: function() {
+                stopScroll();
+            }
+        });
+
+        navTl.to('.nav-center', {
+            height: '100lvh',
+            duration: 0.5
+        }).to('.is-navinside', {
+            color: '#06163f',
+            duration: 0.5
+        }, '<').from('.navbar-navlink', {
+            y: '-1em',
+            opacity: 0,
+            stagger: 0.05
+        }, '<');
+
+        var openNavbar = () => {
+            navbarOpen = true;
+            navTl.play();
+            $('.hamburger-1').addClass('is-open');
+        };
+
+        var closeNavbar = () => {
+            navTl.reverse();
+            navbarOpen = false;
+            $('.hamburger-1').removeClass('is-open');
+        };
+
+        $('.navbar .hamburger').on('click', function () {
+            if (!navbarOpen) {
+                openNavbar();
+            } else {
+                closeNavbar();
+            }
+        });
+    }
+});
+
+var possibleColors = ["#f3f3f5", "#06163f"];
+  var colorNav = (reqColor) => {
+    var currColor = $('.is-navinside').attr('curr-color');
+    if (reqColor !== currColor) {
+      $('.is-navinside').css({
+        color: reqColor
+      });
+      $('.is-navinside').attr('curr-color', reqColor);
+    }
+  };
+function resetNavbarColor() {
+    // Get the section currently in view
+    var currentSection = null;
+    $('.main-wrapper > *').each(function() {
+        var section = $(this);
+
+        // Skip sections with the navbar-ignore attribute
+        if (!!section.attr('navbar-ignore')) {
+            return;
+        }
+
+        // Check if the section is in view using its position relative to the viewport
+        var rect = section[0].getBoundingClientRect();
+        if (rect.top <= 0 && rect.bottom > 0) {
+            currentSection = section;
+            return false; // Stop iteration once we find the current section
+        }
+    });
+
+    if (currentSection) {
+        // Update the navbar color based on the section's color-of-nav attribute
+        colorNav(currentSection.attr('color-of-nav'));
+    } else {
+        // If no section is in view, reset to the default (first section's color-of-nav)
+        colorNav($('.main-wrapper > *:first-child').attr('color-of-nav'));
+    }
+}
+
+// Example usage:
+$(document).ready(function() {
+    // Immediately reset the navbar color when the page loads
+    resetNavbarColor();
+
+    // Optional: Reset the navbar color when the window resizes or other events
+    $(window).on('resize', resetNavbarColor);
+});
+
+$(document).ready(function () {
+    
+
+
+    var defaultColorTimeout;
+    $('.main-wrapper > *').each(function() {
+        var section = $(this);
+        if(!!section.attr('navbar-ignore')) {
+            return;
+        }
+        if (!!section.attr('navbar-white')) {
+            section.attr('color-of-nav', possibleColors[0]);
+        } else {
+            section.attr('color-of-nav', possibleColors[1]);
+        }
+
+        // ScrollTrigger creation
+        ScrollTrigger.create({
+            trigger: section,
+            start: 'top top',
+            end: 'bottom top',
+            onEnter: function() {
+                if (!section.attr('active-section')) { // Only trigger if not already active
+                    section.attr('active-section', 'true');
+                    section.trigger('entered');
+                }
+            },
+            onEnterBack: function() { // Handle scrolling back into the section
+                if (!section.attr('active-section')) {
+                    section.attr('active-section', 'true');
+                    section.trigger('entered');
+                }
+            },
+            onLeave: function() {
+                if (section.attr('active-section')) { // Ensure proper cleanup
+                    section.removeAttr('active-section');
+                    section.trigger('left');
+                }
+            },
+            onLeaveBack: function() { // Handle leaving from the top
+                if (section.attr('active-section')) {
+                    section.removeAttr('active-section');
+                    section.trigger('left');
+                }
+            }
+        });
+
+        // Event listeners
+        section.on('entered', function() {
+            colorNav(section.attr('color-of-nav'));
+        });
+
+        section.on('left', function() {
+            if($('[active-section]').length === 0) {
+                colorNav($('.main-wrapper > *:first-child').attr('color-of-nav')) // default color should be what's at the top section
+            }
+        });
+    });
+});
+</script>
+<script>
+// the navdropdown animation
+$(document).ready(function () {
+    if($(window).width() > 991) {
+        var animationWaitTimeout;
+        var activeTl; // To store the currently active timeline
+        $("[appear-on]").css("opacity", "0");
+        
+        var showNavOverlay = () => {
+        		stopScroll()
+            var noTl = gsap.timeline();
+            noTl.to(".navbar", {
+                background: "white",
+                duration: 0.3
+            }).to(".page-overlay", {
+                opacity: 1,
+                duration: 0.3
+            });
+            colorNav(possibleColors[1])
+        };
+        
+        var collapseDropdowns = () => {
+        		
+        		activeBlock =""
+            if (activeTl) activeTl.kill(); // Kill any active timeline
+            activeTl = gsap.timeline({
+            	onComplete: function(){
+              	resetNavbarColor()
+                startScroll()
+              }
+            });
+            
+            activeTl
+                .to("[appear-on]", {
+                    opacity: 0,
+                    duration: 0.3
+                }, "<")
+                .to(".navdrops-wrapper", {
+                    height: 0,
+                    duration: 0.3
+                })
+                .to(".page-overlay", {
+                    opacity: 0,
+                    duration: 0.3
+                })
+                .to(".navbar", {
+                    background: "transparent",
+                    duration: 0.3
+                });
+        };
+        
+        var showBlock = (toShow) => {
+            const elToShow = $(`[appear-on="${toShow}"]`);
+            if (activeTl) activeTl.kill(); // Kill any active timeline
+            activeTl = gsap.timeline({
+                onStart: function () {
+                    showNavOverlay();
+                }
+            });
+        
+            activeTl
+                .to("[appear-on]", {
+                    opacity: 0,
+                    duration: 0.3,
+                    pointerEvents: 'none'
+                })
+                .to(".navdrops-wrapper", {
+                    height: function () {
+                        return elToShow.innerHeight();
+                    },
+                    duration: 0.3
+                })
+                .to(elToShow, {
+                    opacity: 1,
+                    duration: 0.3,
+                    pointerEvents: 'auto'
+                }, "<");
+        };
+        
+        var activeBlock;
+        
+        // Event Handlers
+        $("[to-show]").on("mouseover", function () {
+            const toShow = $(this).attr("to-show");
+            clearTimeout(animationWaitTimeout); // Prevent collapse timeout
+            if(activeBlock !== toShow) {
+                activeBlock = toShow
+                showBlock(toShow);
+            }
+        });
+        
+        $("[to-show]").on("mouseout", function () {
+            clearTimeout(animationWaitTimeout); // Prevent immediate collapse
+            animationWaitTimeout = setTimeout(function () {
+                collapseDropdowns();
+            }, 300);
+        });
+        
+        $('[appear-on]').on("mouseover", function () {
+            clearTimeout(animationWaitTimeout)
+        })
+        
+        $('[appear-on]').on("mouseout", function () {
+            clearTimeout(animationWaitTimeout); // Prevent immediate collapse
+            animationWaitTimeout = setTimeout(function () {
+                collapseDropdowns();
+            }, 300);
+        })
+    }
+    
+}) 
+
+$(document).ready(function(){
+
+var appearnav;
+var navTransitionAllowed;
+$(document).ready(function () {
+
+    var navInView = false;
+    navTransitionAllowed = true;
+    var navTl = gsap.timeline()
+    appearnav = () => {
+        navInView = true
+        $('.navbar').addClass('appear-sticky').addClass('in-view').removeClass('not-in-view')
+    }
+    var disappearnav = () => {
+        navInView = false
+        $('.navbar').removeClass('in-view').removeClass('appear-sticky').addClass('not-in-view')
+    }
+
+    $(document).ready(function () {
+        var lastScrollTop = 0;
+        $navbar = $('.navbar')
+        $(window).scroll(function (event) {
+            var st = $(this).scrollTop();
+
+            if (st === 0 || st <= $navbar.height()) {
+                $('.navbar').removeClass('in-view appear-sticky not-in-view');
+                navInView = false;
+                return;
+            }
+
+            if (st < lastScrollTop && st > $navbar.height()) {
+                if (!navInView) {
+                    appearnav()
+                }
+
+            } else {
+                if (navTransitionAllowed) {
+                    disappearnav()
+                }
+            }
+            lastScrollTop = st;
+        });
+    });
+
+});
+
+
+})
+</script>

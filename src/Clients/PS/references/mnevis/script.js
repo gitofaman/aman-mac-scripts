@@ -1,3 +1,3 @@
-// alert('working')
+// alert('working web')
 
 // $('.shopify-section').hide()
