@@ -3,3 +3,6 @@
 //     var currentAttr = $(this).attr('data-swiper-attr')
 //     var finalAttr = currentAttr + `;speed:${}`
 // })
+
+
+$('[aria-total-blogs]')
