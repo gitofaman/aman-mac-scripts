@@ -330,8 +330,8 @@ window.initMap = function () {
 // Step 2: Dynamically load Google Maps API once accMapPoints is ready
 function loadGoogleMapsAPI() {
     if (document.getElementById("google-maps-script")) return; // Prevent duplicate loading
-    var API_KEY = "AIzaSyB2AdNtrFHHem7a1vg6mwTjcUCyLVhqD2A"
-    var MAP_ID = "ca89799623bac3d2"
+    var API_KEY = ""
+    var MAP_ID = ""
     const script = document.createElement("script");
     script.id = "google-maps-script";
     script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap&loading=async&libraries=marker&map_ids=${MAP_ID}`;
