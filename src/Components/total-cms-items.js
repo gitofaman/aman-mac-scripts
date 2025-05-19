@@ -1,10 +1,12 @@
-function countTotalItems({ listSelector, itemSelector, nextPageSelector, totalCountSelector }) {
-    let totalItems = $(listSelector).find(itemSelector).length; // Count initial items
+function countTotalItems({ listWrapperSelector, itemSelector, nextPageSelector, totalCountSelector }) {
+    let totalItems = $(listWrapperSelector).find(itemSelector).length; // Count initial items
 
     function fetchNextPage(nextPageUrl) {
         if (!nextPageUrl) {
             console.log(`Final Total (${itemSelector}):`, totalItems);
             $(totalCountSelector).html(totalItems); // Update count in DOM
+            $(listWrapperSelector).attr('total-items', totalItems)
+            $(listWrapperSelector).trigger('total-items-counted');
             return;
         }
 
@@ -32,7 +34,7 @@ function countTotalItems({ listSelector, itemSelector, nextPageSelector, totalCo
     }
 
     // Start fetching if a next-page link exists
-    let nextPageElement = $(listSelector).find(nextPageSelector);
+    let nextPageElement = $(listWrapperSelector).find(nextPageSelector);
     if (nextPageElement.length) {
         let nextPageUrl = nextPageElement.attr("href");
         fetchNextPage(nextPageUrl);
@@ -44,10 +46,9 @@ function countTotalItems({ listSelector, itemSelector, nextPageSelector, totalCo
 
 
 // this is how it works
-// countTotalItems({
-//     listSelector: ".blogs-lists",
-//     itemSelector: ".blog-item",
-//     nextPageSelector: ".w-pagination-next",
-//     totalCountSelector: "[aria-total-blogs]"
-// });
-
+countTotalItems({
+    listWrapperSelector: ".podcast-list-wrapper",
+    itemSelector: ".podcast-itm",
+    nextPageSelector: ".w-pagination-next",
+    totalCountSelector: "[aria-total-blogs]"
+});
