@@ -1,37 +1,40 @@
-var sSliders = document.querySelectorAll('.swiper-slider')
-sSliders.forEach(sSlider=>{
-    comboSwiperBulletName = sSlider.querySelector('.swiper-bullet').classList[1]
-    sSlider.setAttribute('s-bullet-class', comboSwiperBulletName)
-})
-$('.swiper-slider').each(function(index){
-    const swiper = new Swiper($(this).find('.swiper')[0], {
-        slidesPerView: "auto",
-        speed: 500,
-        keyboard: true,
-        pagination: {
-            el: $(this).find('.swiper-bullet-wrapper')[0],
-            bulletActiveClass: "is-active",
-            bulletClass: "swiper-bullet",
-            bulletElement: "button",
-            clickable: true
-        },
-        navigation: {
-            nextEl: $(this).find(".swiper-next")[0],
-            prevEl: $(this).find(".swiper-prev")[0],
-            disabledclass: "is-disabled"
-        },
-        scrollbar: {
-            el: $(this).find(".swiper-drag-wrapper")[0],
-            draggable: true,
-            dragClass: 'swiper-drag',
-            snapOnRelease: true
+$(document).ready(function () {
+    const observer = lozad('.lozad', {
+      loaded: function (el) {
+        const $el = $(el);
+        const videoURL = $el.data('background-video');
+
+        if (videoURL) {
+          // Clear any background placeholder
+          $el.css({
+            'background': '',
+            'background-color': 'transparent',
+            'background-image': `url(${videoURL})`,
+            'background-size': 'cover',
+            'background-position': 'center',
+            'background-repeat': 'no-repeat'
+          });
         }
-    })
-})
-sSliders.forEach(sSlider=>{
-    var swiperBullets = sSlider.querySelectorAll('.swiper-bullet')
-    swiperBullets.forEach(bullet=>{
-        bullet.classList.add(sSlider.getAttribute('s-bullet-class'))
-        bullet.style.padding = '0px'
-    })
-})
+
+        // Lozad.js recommended video handling
+        if ($el.is('video')) {
+          const poster = $el.data('poster');
+          if (poster) {
+            $el.attr('poster', poster);
+          }
+
+          $el.find('source').each(function () {
+            const $source = $(this);
+            const dataSrc = $source.attr('data-src');
+            if (dataSrc) {
+              $source.attr('src', dataSrc);
+            }
+          });
+
+          $el[0].load();
+        }
+      }
+    });
+
+    observer.observe();
+  });
