@@ -1,6 +1,6 @@
-$(document).ready(function () {
-  var swipers = {};
+var swipers = {};
 
+$(document).ready(function () {
   $('.swiper-slider').each(function () {
     const $this = $(this);
     const $swiperEl = $this.find('.swiper');
@@ -61,6 +61,14 @@ $(document).ready(function () {
         }
         swipers[swiperName] = swiper;
       }
+
+      // ✅ Dispatch custom event after swiper is initialized
+      $this[0].dispatchEvent(new CustomEvent("swiper-started", {
+        detail: { swiper },
+        bubbles: true,
+        cancelable: false
+      }));
+
     } catch (err) {
       console.error('Swiper initialization failed for:', this, err);
     }
