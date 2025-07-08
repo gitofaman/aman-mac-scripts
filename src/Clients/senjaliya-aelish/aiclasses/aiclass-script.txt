@@ -27,7 +27,8 @@ $(document).ready(function() {
           $(element).addClass('is-active');
           images.filter(`.is-${index + 1}`).addClass('is-active');
         }
-      }
+      },
+      // markers: true,
     });
   });
 });
