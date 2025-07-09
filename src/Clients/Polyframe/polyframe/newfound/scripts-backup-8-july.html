@@ -1,0 +1,745 @@
+<script src="http://localhost:3000/Clients/Polyframe/polyframe/newfound/script.js"></script>
+<script>
+const $nav = $('.header-global');
+var updateHam = (move, deg) => {
+    var hTl = gsap.timeline()
+    hTl.to('.h-part.top', {
+        x: `-${move}%`
+    }).to('.h-part.bottom', {
+        x: `${move}%`
+    }, '<').to('.h-full.is-front', {
+        rotate: deg
+    }, '<').to('.h-full.is-back', {
+        rotate: -deg
+    }, '<')
+}
+var navbarOpen = false;
+var openNavbar = () => {
+    updateHam(100, 45)
+    var gsapTl = gsap.timeline();
+
+    // Correcting the CSS property names
+    // $('.header-global').css({
+    //     'mix-blend-mode': 'normal'
+    // });
+
+    $('.navbar-menu').css({
+        'opacity': 0,
+        'display': "flex"
+    });
+
+    $('body').css({
+        'overflow': 'hidden'
+    });
+
+    // lenis.stop(); // Assuming lenis is a scrolling controller, you stop it here
+
+    gsapTl.to('.navbar-menu', {
+        opacity: 1,
+        height: '100dvh', // Corrected property
+        duration: 0.5 // Optional: adding duration for smoother animation
+    }).to('.header-global', { // Corrected selector
+        color: 'black'
+    }, 0); // Syncing this animation with the previous one
+};
+
+var closeNavbar = () => {
+    updateHam(0, 0)
+    var gsapTl = gsap.timeline({
+        // onStart: function() {
+        //     $('.header-global').css({
+        //         'mix-blend-mode': 'difference'
+        //     });
+        // },
+        onComplete: function() {
+
+            // $('.header-global').css({
+            //     'mix-blend-mode': 'difference'
+            // });
+            
+            $('.navbar-menu').css({
+                'display': 'none' // Moved this here to ensure it's hidden after animation
+            });
+
+            $('body').css({
+                'overflow': 'visible'
+            });
+            // lenis.start(); // Restart scrolling control
+        }
+    });
+
+    gsapTl.to('.navbar-menu', {
+        opacity: 0,
+        height: 0, // Corrected property
+        duration: 0.5 // Optional: adding duration for smoother animation
+    }).to('.header-global', {
+        color: 'white'
+    }, 0);
+};
+
+// Click handler for the hamburger menu
+$(".hamburger").on('click', function() {
+    if (!navbarOpen) {
+        openNavbar();
+        navbarOpen = true;
+    } else {
+        closeNavbar();
+        navbarOpen = false;
+    }
+});
+
+</script>
+<script>
+  let lenis;
+  if($(window).width() > 991) {
+    
+  
+    // LENIS SMOOTH SCROLL
+    
+    if (Webflow.env("editor") === undefined) {
+        lenis = new Lenis({
+            lerp: 0.1,
+            wheelMultiplier: 0.7,
+            gestureOrientation: "vertical",
+            normalizeWheel: false,
+            smoothTouch: false
+        });
+    
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+    $("[data-lenis-start]").on("click", function () {
+        lenis.start();
+    });
+    $("[data-lenis-stop]").on("click", function () {
+        lenis.stop();
+    });
+    $("[data-lenis-toggle]").on("click", function () {
+        $(this).toggleClass("stop-scroll");
+        if ($(this).hasClass("stop-scroll")) {
+            lenis.stop();
+        } else {
+            lenis.start();
+        }
+    });
+    
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    lenis.on('scroll', function() {
+        ScrollTrigger.refresh()
+    })
+}
+// Scroll-triggered animation
+function splitTextToLines(element, percent = 100) {
+    // Step 1: Clear the original content and wrap each letter in a span
+    let text = element.text().trim();
+    element.empty(); // Clear the original content
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+        let charSpan = $('<span class="char-span"></span>').text(char);
+        element.append(charSpan);
+    }
+
+    let currentTop = 0;
+    let currentLine = 0;
+
+    // Step 2: Assign line numbers based on top position and build lines
+    let lines = [];
+
+    element.find('.char-span').each(function () {
+        let thisTop = $(this).position().top;
+        let currText = $(this).text();
+
+        if (currentTop !== thisTop) {
+            currentLine++;
+            currentTop = thisTop;
+        }
+
+        $(this).attr('line', currentLine);
+
+        if (!lines[currentLine]) {
+            lines[currentLine] = currText;
+        } else {
+            lines[currentLine] += currText;
+        }
+    });
+
+    console.log(lines);
+
+    // Step 3: Construct final HTML with the percent transformation
+    let finalHTML = '';
+    lines.forEach(line => {
+        finalHTML += `
+            <div class="line-span">
+                <div style="transform: translate(0px, ${percent}%);">
+                    ${line}
+                </div>
+            </div>`;
+    });
+
+    element.html(finalHTML);
+}
+
+
+// Function to perform the unwrapping animation
+function unwrapText(element, delay = 0) {
+    if (!element.attr('unwrapped')) {
+        // splitTextToLines(element)
+        // Step 4: GSAP animation
+        var utTl = gsap.timeline({
+            defaults: {
+                duration: 0.6
+            },
+            delay: delay // Set the delay before the animation starts
+        });
+
+        utTl.fromTo(element.find('.line-span div'), {
+            y: "100%"
+        }, {
+            y: "0%",
+            stagger: 0.05 // Stagger stays as 0.05
+        });
+        element.attr('unwrapped', 'true')
+    }
+}
+$(document).ready(function () {
+
+    // Add any necessary styles for the unwrapping
+    var style = document.createElement('style');
+    style.innerHTML = `
+        .line-span {
+            overflow: hidden;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Apply unwrapping animation on elements with unwrap-text on scroll
+    $('[unwrap-text]').each(function () {
+        let element = $(this);
+        let delay = element.attr('delay') ? parseFloat(element.attr('delay')) : 0;
+        splitTextToLines(element)
+        ScrollTrigger.create({
+            trigger: element,
+            start: "top 70%",
+            onEnter: () => unwrapText(element, delay),
+        });
+    });
+
+    // Example: Simple GSAP animation for navigation link text
+    $('.nav-link-text').each(function () {
+        gsap.fromTo($(this), {
+            y: 30
+        }, {
+            y: 0,
+            duration: 0.7
+        });
+    });
+    $('[split-text]').each(function () {
+        splitTextToLines($(this))
+    })
+});
+
+</script>
+<script>
+$('[rm-block]').each(function (i) {
+
+    var mainBlock = $(this);
+
+    var thisId = `rm-${i}`; 
+    mainBlock.children().first().attr('id', thisId);
+    var lines = '.line-span div';
+    var toShowBlock = $(this).find('[rm-show]');
+    var toHideBlock = $(this).find('[rm-hide]');
+
+    var trigger = $(this).find('[rm-trigger]');
+    var finalTriggerText = trigger.attr('rm-trigger');
+    var startTriggerText = trigger.text();
+
+    // Set paused: true to prevent the timeline from running immediately
+    var rmTl = gsap.timeline({
+        paused: true, // Prevents auto-start
+        onComplete: function() {
+            trigger.text(finalTriggerText.toUpperCase());
+            readMore = true;
+            gsap.to(trigger, {
+                height: 'auto',
+                onComplete: function() {
+                    // Kill tweens of the main block and its children to avoid animation stacking
+                    gsap.killTweensOf(mainBlock.find('*'));
+                }
+            });
+        },
+        onReverseComplete: function() {
+            trigger.text(startTriggerText.toUpperCase());
+            readMore = false;
+            gsap.killTweensOf(mainBlock.find('*')); // Kill tweens to prevent stacking
+        }
+    });
+
+    toShowBlock.children().each(function() {
+        splitTextToLines($(this), 100);
+    });
+
+    toShowBlock.css('height', 0);
+    splitTextToLines(toHideBlock, 0);
+
+    var readMore = false;
+
+    trigger.on('click', function() {
+        if (!readMore) {
+            // Clear the timeline to avoid leftover tweens
+            rmTl.clear();
+
+            rmTl.to(trigger, {
+                height: 0
+            }).to(toHideBlock.find(lines), {
+                y: '-100%',
+            }, '<').to(toHideBlock, {
+                height: 0
+            }).to(toShowBlock, {
+                height: "auto"
+            }, '<').to(toShowBlock.find(lines), {
+                y: '0%'
+            });
+
+            rmTl.play(); // Play the timeline on click
+        } else {
+            gsap.to(trigger, {
+                height: 0
+            });
+
+            // Reverse and ensure it's reset cleanly
+            rmTl.reverse();
+        }
+    });
+});
+
+</script>
+
+
+
+<script>
+// Run the fade loop on document ready
+$(document).ready(function () {
+    var defaultTransitionDuration = 0;
+    var defaultDelay = 1500;
+    
+    $('.swiper-fader').each(function () {
+        var delayBetween = $(this).attr('change-time') || defaultDelay;
+        var durationOfFade = defaultTransitionDuration;
+        // Select all images within the swiper-wrapper
+        let slides = $(this).find('.swiper-wrapper.is-slot .swiper-slide');
+        let totalSlides = slides.length;
+    
+        // Ensure that slides are available before proceeding
+        if (totalSlides > 0) {
+            let currentIndex = 0;
+    
+            // Function to handle fading between slides
+            function fadeToNextSlide() {
+                // Select the current and next slide
+                let currentSlide = slides.eq(currentIndex);
+                let nextIndex = (currentIndex + 1) % totalSlides;
+                let nextSlide = slides.eq(nextIndex);
+    
+                // Animate the fade-out of the current slide and fade-in of the next slide
+                gsap.timeline()
+                    .set(nextSlide, {
+                        zIndex: 2
+                    }) // Bring next slide to the top
+                    .to(currentSlide, {
+                        opacity: 0,
+                        duration: durationOfFade,
+                        ease: "power2.inOut"
+                    }) // Fade out current
+                    .to(nextSlide, {
+                        opacity: 1,
+                        duration: durationOfFade,
+                        ease: "power2.inOut"
+                    }, `-=${durationOfFade}`) // Fade in next
+                    .set(currentSlide, {
+                        zIndex: 1
+                    }) // Move current slide back after fade-out
+    
+                // Update current index for the next cycle
+                currentIndex = nextIndex;
+    
+                // Continue the loop
+                setTimeout(fadeToNextSlide, delayBetween); // Delay before the next transition
+            }
+    
+            // Initialize the first slide with full opacity and z-index
+            gsap.set(slides, {
+                opacity: 0,
+                zIndex: 1
+            });
+            gsap.set(slides.eq(currentIndex), {
+                opacity: 1,
+                zIndex: 2
+            });
+    
+            // Start the loop
+            fadeToNextSlide();
+        }
+    })
+});
+</script>
+<script>
+$('[unwrap-obj]').each(function() {
+    var $obj = $(this);
+    var $wrapperDiv = $('<div></div>');
+    
+    // Ensure the wrapper div has the same dimensions as the wrapped element
+    $wrapperDiv.css({
+        'overflow': 'hidden',             // Hidden overflow for animation
+        'display': 'inline-block',        // Maintain the element's inline behavior
+        'position': 'relative'            // Keep position relative for safe placement
+    });
+    
+    // Wrap the obj element with the wrapper div
+    $obj.wrap($wrapperDiv);
+
+    // Animate the obj element from below to its normal position
+    gsap.fromTo($obj, {
+        y: '100%'
+    }, {
+        y: '0%',
+        duration: 1,
+        scrollTrigger: {
+            trigger: $obj.parent(),  // Trigger animation on the wrapper div
+            start: 'top 60%'         // Adjust as needed for timing
+        }
+    });
+});
+
+</script>
+<script>
+var refreshWorkCardLinks = () => {
+    $(document).ready(function(){
+        $('.work-card_1').each(function(){
+            var linkURL = new URL($(this).find('.work-card_link').attr('href'))
+            var linkPath = linkURL.pathname
+        
+            // linkURL is like this http://newfound-web.webflow.io/case-study/andrew-denatale but we want /case-study/andrew-denatale i.e, the path name
+            $(this).find('a:not(.work-card_link)').each(function(){
+                $(this).attr('href', linkPath)
+            })
+        })
+    })
+}
+refreshWorkCardLinks()
+</script>
+<script>
+  //textarea auto resize
+  $(document).ready(function () {
+    $('textarea').each(function () {
+        var $textarea = $(this);
+        var minHeight = parseFloat($textarea.innerHeight()); // Get the initial height in pixels
+    
+        // Function to adjust the height of the textarea
+        function autoResize() {
+            $textarea.css('height', 'auto'); // Reset the height first to recalculate it
+            var newHeight = $textarea[0].scrollHeight;
+            if (newHeight > minHeight) {
+                $textarea.css('height', newHeight + 'px'); // Expand based on scrollHeight if necessary
+            } else {
+                $textarea.css('height', minHeight + 'px'); // Retain the minimum height
+            }
+        }
+    
+        // Bind the input event to the textarea
+        $textarea.on('input', autoResize);
+        $textarea.on('change', autoResize);
+    
+        // Trigger resize on page load in case there's pre-filled text
+        autoResize();
+    });
+});
+
+</script>
+<script>
+
+</script>
+<script>
+// the hero animation
+var eases = ['easeIn', 'easeOut'];
+
+$(document).ready(function() {
+    // Ensure the required elements for featured work animations exist
+    if ($('.featured-work-header').length && $('.home-work-main').length) {
+        // featured work should fade in 
+        // then the work block parent
+        // on scroll the work blocks should slide from left
+        animateOnScroll($('.featured-work-header, .home-work-main'), { opacity: 0 }, { opacity: 1 }, 60);
+    }
+
+    if ($(".work-card_1").length) {
+        $(".work-card_1").each(function() {
+            var mainEl = $(this);
+            var wTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: mainEl,
+                    start: 'top 70%'
+                }
+            });
+            wTl.from(mainEl, {
+                y: 50,
+                opacity: 0
+            });
+        });
+    }
+
+    if ($('.work-card_content').length) {
+        $('.work-card_content').each(function() {
+            gsap.from($(this).children(), {
+                y: 10,
+                opacity: 0,
+                stagger: 0.4,
+                scrollTrigger: {
+                    trigger: this, // Refers to the current .work-card_content
+                    start: 'top 80%',
+                }
+            });
+        });
+    }
+
+    var imgwraps = [".work-card_img-wrap", "[img-scale]"];
+    imgwraps.forEach(function(imgwrap) {
+        if ($(imgwrap).length) {
+            $(imgwrap).each(function() {
+                var mainEl = $(this);
+                var img = mainEl.find('img');
+                gsap.from(img, {
+                    scale: 1.4,
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: mainEl,
+                        start: 'top 75%'
+                    }
+                });
+            });
+        }
+    });
+});
+
+</script>
+<script>
+// temporarily disabling the function
+if(false) {
+gsap.registerPlugin(ScrollTrigger);
+
+$(document).ready(function () {
+    const navbar = $('.header-global');
+    let navbarShown = true;
+
+    const hideNavbar = () => {
+        if (navbarShown) {
+            console.log("Hiding navbar");
+            navbarShown = false;
+            gsap.to(navbar, { y: '-100%', duration: 0.5, ease: 'power2.out' });
+        }
+    };
+
+    const showNavbar = () => {
+        if (!navbarShown) {
+            console.log("Showing navbar");
+            navbarShown = true;
+            gsap.to(navbar, { y: '0%', duration: 0.5, ease: 'power2.out' });
+        }
+    };
+
+    // Lenis Smooth Scroll Integration
+    if (typeof lenis !== "undefined") {
+        // Update ScrollTrigger with Lenis scroll data
+        lenis.on("scroll", ({ scroll, velocity }) => {
+            ScrollTrigger.update(); // Sync ScrollTrigger with Lenis
+
+            if (scroll > 30) {
+                if (velocity > 0) {
+                    hideNavbar(); // Scrolling down
+                } else if (velocity < 0) {
+                    showNavbar(); // Scrolling up
+                }
+            } else if (scroll <= 30) {
+                showNavbar(); // At the top
+            }
+        });
+    } else {
+        // console.log("USING")
+        ScrollTrigger.create({
+            trigger: document.body, // Monitor the whole page's scroll
+            start: "top top",       // Start tracking from the top
+            onUpdate: (self) => {
+                // If Lenis is defined, let it handle the scroll updates
+                // if (typeof lenis !== "undefined") return;
+    
+                const scrollY = window.scrollY;
+                // console.log('scrolling')
+                // console.log(scrollY)
+                // console.log(self.direction)
+                if (scrollY > 30) {
+                    if (self.direction === 1) {
+                        hideNavbar(); // Scrolling down
+                    } else if (self.direction === -1) {
+                        showNavbar(); // Scrolling up
+                    }
+                } else if (scrollY <= 30) {
+                    showNavbar(); // At the top
+                }
+            },
+        });
+    }
+
+    // Create a ScrollTrigger instance
+
+});
+}
+
+</script>
+<script>
+// allowNavbarCode = false
+
+if(allowNavbarCode) {
+$(function () {
+  const isMobile = $('.mobile-bottom-navigation:visible').length,
+    navWrapper = $('.nav-links-wrapper'),
+    navContent = $('[nav-link-content]'),
+    navToggle = $('[nav-link-toggle]'),
+    navigationBtn = $('.navigation-button-cover');
+  let currentTween = null,
+    isNavOnTopActive = false,
+    currentSection = null,
+    yChange = window.innerWidth < 768 ? -100 : 100;
+
+  const killTween = () => currentTween && currentTween.kill();
+
+  const animateNav = (props1, props2, props3, pointerEvents, activating) => {
+    killTween();
+    currentTween = gsap.timeline({
+      onComplete: () => {
+        navContent.css("pointer-events", pointerEvents);
+        currentTween = null;
+      },
+    })
+    if(activating) {
+        currentTween.to(navToggle, props3)
+      .to(navWrapper, props2)
+      .to(navContent, props1)
+    } else {
+        currentTween.to(navContent, props1)
+      .to(navWrapper, props2)
+      .to(navToggle, props3);
+    }
+    
+  };
+
+  const activate = () => {
+    const dim = isMobile
+      ? { w: navContent.outerWidth(), h: navContent.outerHeight() }
+      : { w: navContent.outerWidth(), h: null };
+    var pointerEvents = 'auto'
+    animateNav(
+      { opacity: 1, duration: 0.2 },
+      isMobile
+        ? { width: dim.w, height: dim.h }
+        : { width: dim.w, duration: 0.3, ease: "power2.inOut" },
+      { opacity: 0, duration: 0.2 },
+      pointerEvents,
+      true
+    );
+  };
+
+  const deactivate = () => {
+    const dim = isMobile
+      ? { w: navToggle.outerWidth(), h: navToggle.outerHeight() }
+      : { w: navToggle.outerWidth(), h: null };
+    var pointerEvents = 'none'
+    animateNav(
+      { opacity: 0, duration: 0.2 },
+      isMobile
+        ? { width: dim.w, height: dim.h }
+        : { width: dim.w, duration: 0.3, ease: "power2.inOut" },
+      { opacity: 1, duration: 0.2 },
+      pointerEvents,
+      false
+    );
+  };
+
+  isMobile
+    ? navWrapper.on("click", activate)
+    : navWrapper.on({ mouseenter: activate, mouseleave: deactivate });
+
+  deactivate();
+
+  gsap.set(navigationBtn, { y: -yChange, width: 0 });
+
+  const addNavOnTop = (text, link) => {
+    const btnLink = navigationBtn.find("a"),
+      curText = btnLink.text(),
+      curHref = btnLink.attr("href"),
+      isVisible = navigationBtn.outerWidth() > 0 && navigationBtn.offset().top >= 0;
+
+    if (isVisible && (curText !== text || curHref !== link)) {
+      gsap.timeline()
+        .to(navigationBtn, { y: -yChange, duration: 0.2, onComplete: () => btnLink.text(text).attr("href", link) })
+        .to(navigationBtn, { y: 0, duration: 0.2, onComplete: () => (isNavOnTopActive = true) });
+    } else if (!isVisible) {
+      btnLink.text(text).attr("href", link);
+      gsap.timeline()
+        .to(navigationBtn, { width: "auto", duration: 0.2 })
+        .to(navigationBtn, { y: 0, duration: 0.1, onComplete: () => (isNavOnTopActive = true) });
+    }
+  };
+
+  const hideNav = () => {
+    gsap.timeline()
+      .to(navigationBtn, { y: -yChange, duration: 0.1 })
+      .to(navigationBtn, { width: 0, duration: 0.2, onComplete: () => (isNavOnTopActive = false) });
+  };
+
+  const getVisibleHeight = el => {
+    const r = el.getBoundingClientRect(),
+      wh = window.innerHeight;
+    return Math.max(0, Math.min(r.bottom, wh) - Math.max(r.top, 0));
+  };
+
+  const checkSection = () => {
+    let maxH = 0, mostVisible = null;
+    $('[section-link]').each(function () {
+      const vh = getVisibleHeight(this);
+      if (vh > maxH && vh >= window.innerHeight / 2) maxH = vh, mostVisible = $(this);
+    });
+    if (mostVisible && (!currentSection || currentSection.get(0) !== mostVisible.get(0))) {
+      currentSection = mostVisible;
+      const btn = currentSection.find("[section-link-button]");
+      addNavOnTop(btn.text(), btn.attr("href") || "#");
+    } else if (!mostVisible && (currentSection || isNavOnTopActive)) {
+      currentSection = null;
+      hideNav();
+    }
+  };
+
+  $(window).on("scroll resize", checkSection);
+  checkSection();
+});
+}
+</script>
+<script>
+$(document).ready(function() {
+// to convert comma separated tags to actual looking like tags
+$('[tag-para]').each(function() {
+    var tags = $(this).text().split(',')
+    var finalTagsSpans = ""
+    tags.forEach(function(tag) {
+        finalTagsSpans += `<span> ${tag.trim()}</span>`
+    })
+    $(this).html(finalTagsSpans)
+    $(this).addClass('button-group')
+})
+})
+</script>
