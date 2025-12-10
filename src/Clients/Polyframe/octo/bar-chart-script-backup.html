@@ -1,0 +1,240 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+// chart script
+
+const colors = {
+    red1: '#CF461A',
+    red2: '#EB7A55',
+    red3: '#F99A7B',
+    red4: '#FFBCA6',
+    blue1: '#492CB0',
+    blue2: '#523BA4',
+    blue3: '#5D49A6',
+    blue4: '#715DBA',
+    blue5: '#8B78CF',
+    blue6: '#A797E0',
+    blue7: '#C5BBE8',
+    blue8: '#E3DEF6',
+    yellow1: '#DED621'
+};
+const baseChartConfig = (step = 20, max = 60, data, opts = {}) => {
+  const fontSize = typeof opts.fontSize === 'number' ? opts.fontSize : 14;
+  const showValues = opts.showValues !== false; // default true
+  const showIndex = !!opts.showIndex; // default false
+  const highlightFirstGrid = opts.highlightFirstGrid !== false; // default true
+  const chartType = opts.type || 'bar'; // 'bar' | 'pie' | 'doughnut'
+  const isPie = chartType === 'pie' || chartType === 'doughnut';
+
+  // unified value plugin that supports bars and pie/doughnut
+  const valueLabelPlugin = {
+    id: 'valueLabelPlugin',
+    afterDatasetsDraw(chart) {
+      if (!showValues) return;
+      const ctx = chart.ctx;
+
+      if (isPie) {
+        // draw outside labels for pie/doughnut
+        const dataset = chart.data.datasets[0];
+        const meta = chart.getDatasetMeta(0);
+        const total = dataset.data.reduce((s, v) => s + (Number(v) || 0), 0) || 1;
+
+        meta.data.forEach((arc, i) => {
+          const value = Number(dataset.data[i]) || 0;
+          const perc = Math.round((value / total) * 1000) / 10; // e.g. 16.8
+          const angle = (arc.startAngle + arc.endAngle) / 2;
+          // anchor point (on arc edge)
+          const radius = (chart.innerRadius + chart.outerRadius) / 2 || arc.outerRadius;
+          const x = chart.width / 2 + Math.cos(angle) * (radius + 6);
+          const y = chart.height / 2 + Math.sin(angle) * (radius + 6);
+
+          // label outside the arc, simple line connector
+          const lineStartX = chart.width / 2 + Math.cos(angle) * (arc.outerRadius - 6);
+          const lineStartY = chart.height / 2 + Math.sin(angle) * (arc.outerRadius - 6);
+          const lineEndX = chart.width / 2 + Math.cos(angle) * (arc.outerRadius + 14);
+          const lineEndY = chart.height / 2 + Math.sin(angle) * (arc.outerRadius + 14);
+
+          ctx.save();
+          // connector line
+          ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(lineStartX, lineStartY);
+          ctx.lineTo(lineEndX, lineEndY);
+          ctx.stroke();
+
+          // label text
+          ctx.font = `${Math.round(fontSize)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial`;
+          ctx.fillStyle = '#ffffff';
+          ctx.textBaseline = 'middle';
+          // align right for left half, left for right half
+          const align = Math.cos(angle) < 0 ? 'right' : 'left';
+          ctx.textAlign = align;
+          const textX = align === 'right' ? lineEndX - 6 : lineEndX + 6;
+          ctx.fillText(`${perc}%`, textX, lineEndY);
+          ctx.restore();
+        });
+
+      } else {
+        // existing bar label code
+        chart.data.datasets.forEach((dataset, datasetIndex) => {
+          const meta = chart.getDatasetMeta(datasetIndex);
+          meta.data.forEach((bar, i) => {
+            const value = dataset.data[i];
+            if (value == null) return;
+            const xPos = bar.x + 8; // 8px offset to the right
+            const yPos = bar.y;
+            ctx.save();
+            ctx.font = `${Math.round(fontSize)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial`;
+            ctx.fillStyle = '#ffffff';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'left';
+            ctx.fillText(`${value}%`, xPos, yPos);
+            ctx.restore();
+          });
+        });
+      }
+    }
+  };
+
+  // index plugin remains only useful for bar charts
+  const indexLabelPlugin = {
+    id: 'indexLabelPlugin',
+    afterDraw(chart) {
+      if (!showIndex || isPie) return;
+      const ctx = chart.ctx;
+      const yScale = chart.scales.y;
+      if (!yScale) return;
+      ctx.save();
+      ctx.font = `${Math.round(fontSize * 0.9)}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto`;
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'right';
+      const leftX = yScale.left - 12;
+      chart.data.labels.forEach((label, i) => {
+        const y = yScale.getPixelForTick(i);
+        ctx.fillText(String(i + 1), leftX, y);
+      });
+      ctx.restore();
+    }
+  };
+
+  // common config skeleton
+  const config = {
+    type: isPie ? (chartType === 'doughnut' ? 'doughnut' : 'pie') : 'bar',
+    data,
+    options: {
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              // pie/doughnut tooltip: show percent computed from total
+              if (isPie) {
+                const ds = ctx.dataset.data;
+                const total = ds.reduce((s, v) => s + (Number(v) || 0), 0) || 1;
+                const val = Number(ctx.parsed) || 0;
+                const perc = Math.round((val / total) * 1000) / 10;
+                return `${perc}% (${val})`;
+              }
+              return `${ctx.parsed.x}%`;
+            }
+          }
+        }
+      },
+      layout: {
+        padding: { left: 120, right: 20, top: 24, bottom: 24 }
+      }
+    },
+    plugins: [valueLabelPlugin, indexLabelPlugin]
+  };
+
+  // type-specific adjustments
+  if (isPie) {
+    // remove scales, set cutout for donut look, adjust padding for labels
+    config.options.cutout = opts.cutout || '55%'; // donut hole
+    config.options.rotation = opts.rotation || -Math.PI / 2; // start at top
+    config.options.plugins.legend.display = !!opts.showLegend; // allow enabling legend
+    // increase right padding so labels don't clip
+    config.options.layout.padding.right = Math.max(config.options.layout.padding.right, 80);
+  } else {
+    // bar specific options (unchanged from previous)
+    config.options.indexAxis = 'y';
+    config.options.plugins = config.options.plugins || {};
+    config.options.plugins.tooltip = config.options.plugins.tooltip || {};
+    // scales
+    config.options.scales = {
+      x: {
+        beginAtZero: true,
+        max: max,
+        ticks: {
+          stepSize: step,
+          callback: (value) => value + '%',
+          color: '#ffffff',
+          font: { size: fontSize, weight: '500' }
+        },
+        grid: {
+          color: (context) => {
+            const tickValue = context && context.tick && typeof context.tick.value !== 'undefined'
+              ? context.tick.value
+              : (typeof context.index !== 'undefined' ? context.index * step : null);
+            if (highlightFirstGrid && tickValue === 0) return 'rgba(255,255,255,0.9)';
+            return 'rgba(255,255,255,0.12)';
+          },
+          lineWidth: (context) => {
+            const tickValue = context && context.tick && typeof context.tick.value !== 'undefined'
+              ? context.tick.value
+              : (typeof context.index !== 'undefined' ? context.index * step : null);
+            return (highlightFirstGrid && tickValue === 0) ? 1.5 : 1;
+          },
+          drawBorder: false
+        }
+      },
+      y: {
+        grid: { display: false },
+        ticks: {
+          color: '#ffffff',
+          font: { size: fontSize, weight: '400' },
+          padding: 12,
+          callback: function (value) {
+            const label = this.getLabelForValue(value);
+            return label || '';
+          }
+        }
+      }
+    };
+    config.options.elements = {
+      bar: {
+        borderRadius: { topLeft: 0, bottomLeft: 0, topRight: 4, bottomRight: 4 },
+        borderSkipped: false
+      }
+    };
+  }
+
+  return config;
+};
+
+// createChart stays the same but pass opts.type = 'pie' or 'doughnut' when calling
+const createChart = (canvasId, data, step = 20, max = 60, opts = {}) => {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) {
+    console.warn('Canvas not found:', canvasId);
+    return null;
+  }
+  const ctx = canvas.getContext('2d');
+
+  const config = baseChartConfig(step, max, data, opts);
+
+  if (opts.title) {
+    config.options.plugins.title = {
+      display: true,
+      text: opts.title,
+      color: '#ffffff',
+      font: { size: opts.fontSize ? Math.round(opts.fontSize * 1.15) : 16, weight: '500' },
+      padding: { bottom: 16 }
+    };
+  }
+
+  return new Chart(ctx, config);
+};
+</script>
