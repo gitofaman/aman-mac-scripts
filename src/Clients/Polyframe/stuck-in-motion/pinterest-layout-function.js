@@ -1,4 +1,6 @@
+useLocalhost = true;
 // layout script
+
 window.createdGrid = window.createdGrid || {};
 window.createdGrid.isReady = false;
 function triggerLayoutReady() {
